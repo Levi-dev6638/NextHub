@@ -19,23 +19,11 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Motivo:**
 ```
 
-## 23/11/2026 — Escolha da stack de back-end (exemplo)
-
-- **Decisão:** usar Node.js com Express no back-end.
-- **Alternativas consideradas:** Java com Spring Boot; Python com FastAPI.
-- **Motivo:** o time já tem mais familiaridade com JavaScript, e o prazo de uma semana favorece uma stack na qual todos conseguem contribuir desde o primeiro dia.
-
 ## 23/11/2026 — Referências de mercado para a experiência do mural
 
 - **Decisão:** usar o **InfoJobs** e o **Indeed** como referências de inspiração para organizar e apresentar as oportunidades no mural.
 - **Alternativas consideradas:** criar uma experiência totalmente original; reproduzir exatamente o layout de uma única plataforma; combinar padrões de múltiplos portais de vagas.
 - **Motivo:** essas plataformas já oferecem padrões claros e familiares, como busca objetiva, filtros úteis e cards concisos com informações essenciais. O mural pode aproveitar esses aprendizados sem copiar os produtos: o objetivo é manter uma navegação simples e criar uma identidade própria, mais próxima da proposta do projeto.
-
-## 23/11/2026 — Separação entre back-end em Java e front-end em Node.js, HTML e CSS
-
-- **Decisão:** usar Java no back-end e Node.js com HTML e CSS no front-end.
-- **Alternativas consideradas:** Node.js com Express em todo o projeto; Java com Spring Boot em todo o projeto; Python com FastAPI no back-end.
-- **Motivo:** a combinação permite explorar duas tecnologias de back-end com propostas diferentes: Java oferece uma base madura e estruturada, enquanto Node.js atende à camada de apresentação e à integração com HTML e CSS. A decisão será validada durante a implementação do MVP e pode ser ajustada caso surjam limitações técnicas ou de integração.
 
 ## 24/11/2026 — Definição oficial do MVP do NextHub
 
@@ -90,3 +78,8 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Decisão:** deixar fora sistema de pontuação, gamificação e ranking; processo seletivo completo das empresas; varredura automática da internet; bancos externos complexos; botão permanente de tema na navegação mobile; e abas separadas de Salvos.
 - **Alternativas consideradas:** implementar todos esses extras durante a semana; manter apenas uma seleção parcial desses recursos.
 - **Motivo:** esses itens aumentariam o tempo de implementação, a complexidade técnica ou a poluição visual sem serem essenciais para validar o problema central. O grupo prioriza um fluxo profissional, direto e estável.
+
+## 25/11/2026 — Estado de verificação da implementação no repositório
+- **Decisão:** registrar a stack e o escopo pretendidos do MVP, mas não marcar recursos da aplicação como implementados até que seu código-fonte ou um commit verificável exista no repositório.
+- **Alternativas consideradas:** apresentar conversas e atualizações baseadas em ZIP como implementação concluída; restringir o registro exclusivamente aos arquivos-fonte atuais.
+- **Motivo:** o commit atual contém apenas documentação do projeto. Isso mantém o registro historicamente útil sem transformar recursos solicitados ou não verificados em fatos confirmados de implementação.
