@@ -19,23 +19,11 @@ Copy the template below whenever you need a new entry.
 - **Rationale:**
 ```
 
-## 23/11/2026 — Back-end stack choice (example)
-
-- **Decision:** use Node.js with Express on the back-end.
-- **Alternatives considered:** Java with Spring Boot; Python with FastAPI.
-- **Rationale:** the team is already more familiar with JavaScript, and a one-week deadline favors a stack everyone can contribute to from day one.
-
 ## 23/11/2026 — Market references for the opportunity wall experience
 
 - **Decision:** use **InfoJobs** and **Indeed** as visual and interaction references for organizing and presenting opportunities in the wall.
 - **Alternatives considered:** creating a fully original experience; reproducing the layout of a single platform; combining patterns from multiple job portals.
 - **Rationale:** both platforms offer clear, familiar patterns such as straightforward search, useful filters and concise cards with essential information. The project can learn from these patterns without copying the products, preserving a simple navigation flow and a distinct identity aligned with the mural's purpose.
-
-## 23/11/2026 — Java back-end and Node.js, HTML and CSS front-end
-
-- **Decision:** use Java for the back-end and Node.js with HTML and CSS for the front-end.
-- **Alternatives considered:** Node.js with Express across the project; Java with Spring Boot across the project; Python with FastAPI for the back-end.
-- **Rationale:** this combination allows the team to explore two back-end approaches with different characteristics: Java provides a mature, structured foundation, while Node.js supports the presentation layer and integration with HTML and CSS. The decision will be validated during MVP implementation and may be adjusted if technical or integration limitations arise.
 
 ## 24/11/2026 — Official NextHub MVP scope
 - **Decision:** deliver a responsive, end-to-end and demonstrable MVP within one week. Students must be able to complete a profile and upload a PDF résumé, receive recommendations, save opportunities and submit applications. Companies must be able to publish opportunities and view enrolled candidates.
@@ -81,3 +69,8 @@ Copy the template below whenever you need a new entry.
 - **Decision:** exclude points, gamification and ranking; complete company selection workflows; automatic internet scraping; complex external databases; a permanent theme button in mobile navigation; and separate Saved tabs.
 - **Alternatives considered:** implementing all extras during the week; retaining only a partial selection of them.
 - **Rationale:** these items would increase implementation time, technical complexity or visual clutter without being essential to validate the central problem. The team prioritizes a professional, direct and stable flow.
+
+## 25/11/2026 — Repository implementation verification status
+- **Decision:** document the proposed stack and MVP scope, but do not mark application features as implemented until their source code or a verifiable commit exists in the repository.
+- **Alternatives considered:** presenting conversation and ZIP-based updates as completed implementation; restricting the log strictly to current source files.
+- **Rationale:** the current commit contains project documentation only. This keeps the decisions historically useful without converting requested or unverified features into confirmed implementation facts.
