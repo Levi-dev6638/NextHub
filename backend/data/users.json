@@ -1,0 +1,130 @@
+[
+  {
+    "id": "u-student",
+    "name": "Ana Costa",
+    "email": "ana@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "phone": "(11) 99999-1000",
+      "institution": "Universidade Metropolitana",
+      "education": "Análise e Desenvolvimento de Sistemas",
+      "interests": "Tecnologia, Desenvolvimento web",
+      "format": "Remoto",
+      "availability": "30 horas semanais"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-company",
+    "name": "Equipe de Talentos",
+    "email": "talentos@nexthub.demo",
+    "role": "company",
+    "profile": {},
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-student2",
+    "name": "Lucas Martins",
+    "email": "lucas@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "institution": "Centro Universitário Horizonte",
+      "education": "Design Digital",
+      "interests": "Design, UX",
+      "format": "Híbrido"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-company2",
+    "name": "Instituto Trilhas",
+    "email": "contato@trilhas.demo",
+    "role": "company",
+    "profile": {},
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-student3",
+    "name": "Mariana Alves",
+    "email": "mariana@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "institution": "Universidade Horizonte",
+      "education": "Engenharia de Software",
+      "interests": "Tecnologia, Front-end",
+      "format": "Remoto",
+      "availability": "30 horas semanais"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-student4",
+    "name": "Rafael Lima",
+    "email": "rafael@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "institution": "Universidade Horizonte",
+      "education": "Sistemas de Informação",
+      "interests": "QA, Tecnologia",
+      "format": "Híbrido",
+      "availability": "30 horas semanais"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-student5",
+    "name": "Beatriz Souza",
+    "email": "bia@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "institution": "Universidade Horizonte",
+      "education": "Design Digital",
+      "interests": "Design, UX",
+      "format": "Remoto",
+      "availability": "30 horas semanais"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-student6",
+    "name": "Pedro Nunes",
+    "email": "pedro@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "institution": "Universidade Horizonte",
+      "education": "Administração",
+      "interests": "Marketing, Negócios",
+      "format": "Presencial",
+      "availability": "30 horas semanais"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-student7",
+    "name": "Camila Rocha",
+    "email": "camila@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "institution": "Universidade Horizonte",
+      "education": "Ciência da Computação",
+      "interests": "Dados, Python",
+      "format": "Remoto",
+      "availability": "30 horas semanais"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  },
+  {
+    "id": "u-student8",
+    "name": "João Ribeiro",
+    "email": "joao@nexthub.demo",
+    "role": "student",
+    "profile": {
+      "institution": "Universidade Horizonte",
+      "education": "Comunicação Social",
+      "interests": "Conteúdo, Comunicação",
+      "format": "Híbrido",
+      "availability": "30 horas semanais"
+    },
+    "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+  }
+]
