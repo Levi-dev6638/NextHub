@@ -59,3 +59,17 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **O que a IA gerou:** uma consolidação oficial das decisões adotadas e dos itens recusados; uma estrutura full stack em HTML/CSS/JavaScript, Node.js/Express e JSON; API REST, upload real de PDFs, dados fictícios pré-populados e telas navegáveis para candidato e empresa. Também foram definidos o nome NextHub, as recomendações por interesses/formato/disponibilidade, a navegação responsiva, o tema claro/escuro e os fluxos de perfil, mural, candidatura, publicação e gestão de candidatos.
 - **O que o time aproveitou:** a organização clara do escopo, a arquitetura local simples e estável, os dados fictícios realistas, o fluxo completo de estudante e empresa, a identidade visual moderna, a navegação desktop/mobile e a centralização das configurações.
 - **O que o time corrigiu ou rejeitou, e por quê:** o time não delegou as decisões à IA. Mantém gamificação e pontuação fora do escopo, assim como abas separadas de Salvos, botão solto de tema no mobile e frameworks ou bancos externos complexos. Optou por integrar Salvos a Candidaturas, colocar tema e logout em Configurações e usar apenas HTML/CSS/JavaScript, Node.js/Express e JSON para reduzir clics, complexidade visual e riscos de conexão na apresentação.
+
+### 25/11/2026 — Inicialização do projeto frontend
+
+- **Prompt principal:** Inicializar um projeto frontend para a interface do NextHub e organizar a pasta de desenvolvimento do frontend.
+- **O que a IA gerou:** o histórico confirma um projeto React com Vite em `Front-end/`, incluindo `package.json`, configuração do Vite, ponto de entrada React e componente inicial da aplicação. Nesta etapa, `App.jsx` ainda é a tela inicial gerada pelo Vite, não uma tela de recursos do NextHub.
+- **O que o time aproveitou:** a estrutura React e Vite está presente no repositório e fornece a base para implementações frontend posteriores.
+- **O que o time corrigiu ou rejeitou, e por quê:** o conteúdo inicial gerado não foi registrado como implementação do NextHub. Apenas a configuração confirmada foi documentada; telas de recursos, filtros, favoritos e recomendações exigem código correspondente antes de serem considerados concluídos.
+
+### 25/11/2026 — Inicialização do projeto backend
+
+- **Prompt principal:** Inicializar um projeto backend em Java para a API do NextHub.
+- **O que a IA gerou:** o histórico confirma um projeto Spring Boot 4.2 em `Back-end/`, usando Java 17 e Maven. O código versionado contém a classe principal da aplicação Spring e dependências iniciais web e de validação; não há implementação de endpoint REST do NextHub no código atual.
+- **O que o time aproveitou:** a estrutura do Spring Boot, o wrapper Maven, a configuração da aplicação e a configuração de testes foram mantidos como base do backend.
+- **O que o time corrigiu ou rejeitou, e por quê:** nenhuma API, persistência, autenticação ou implementação Multer é declarada, pois não existe código correspondente no repositório verificado. A configuração é registrada apenas como inicialização, não como fluxo backend concluído.
