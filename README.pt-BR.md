@@ -1,4 +1,4 @@
-# [Nome do projeto]
+# [NextHub]
 
 [English](README.md) · **Português (Brasil)**
 
@@ -13,12 +13,12 @@ No primeiro dia, adicionem o professor como colaborador do repositório, com o e
 ## Equipe
 
 - **Turma:** TDS — turmas mistas 6570, 6756 e 6863
-- **Tech Lead:**
-- **Responsável pela apresentação:**
+- **Tech Lead:** Levi
+- **Responsável pela apresentação:** Lucas
 - **Integrantes:**
-  - Levi — GitHub
-  - Lucas — GitHub
-  - Giovana (6863) — GitHub
+  - Levi — Levi-dev6638
+  - Lucas — martinszvx 
+  - Giovana (6863) — Giovana-Bernardes
 
 ## Tema / área
 
@@ -26,11 +26,22 @@ Mural de oportunidades — vida no campus e comunidade
 
 ## Problema
 
-(qual problema vocês estão resolvendo, e para quem)
+Estudantes encontram vagas, cursos e eventos espalhados em grupos, redes sociais e murais físicos. Isso dificulta a busca, o acompanhamento de prazos e a identificação de oportunidades compatíveis com seus interesses e disponibilidade.
 
 ## Solução
 
-(o que a aplicação faz e qual é o recorte do MVP)
+O NextHub centraliza as oportunidades e permite que empresas publiquem anúncios rapidamente. O candidato pode pesquisar e filtrar oportunidades, completar seu perfil, anexar um currículo PDF, salvar itens e candidatar-se. O sistema destaca recomendações explicáveis com base em interesses, formato e disponibilidade.
+
+### MVP
+
+- Cadastro completo de oportunidades por recrutadores.
+- Listagem, busca e filtros por tipo, formato e assunto.
+- Página de detalhes para cada oportunidade.
+- Perfil do estudante com interesses, disponibilidade, cursos e currículo PDF.
+- Recomendações visíveis com motivo da correspondência.
+- Salvamento e candidaturas integrados.
+- Gestão de candidatos e currículo PDF pela empresa.
+- Tema claro/escuro e navegação responsiva com Sidebar no desktop e Bottom Bar no mobile.
 
 ## Stack
 
@@ -55,10 +66,24 @@ Descrevam a organização do repositório. Ajustem o exemplo abaixo à escolha d
 
 ## Como rodar
 
+```bash
+npm start
+```
+
 ### Pré-requisitos
 
-(versões de linguagem, gerenciadores de pacote, banco de dados etc.)
+- Node.js 18 ou superior.
+- npm.
+- Python 3, apenas para resetar o banco local.
+- Navegador moderno.
 
+### Instalação
+
+Abra a pasta do projeto no VS Code e execute:
+
+```bash
+npm install
+```
 ### Back-end
 
 ```bash

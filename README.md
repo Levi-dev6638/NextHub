@@ -1,4 +1,4 @@
-# [Project name]
+# [NextHub]
 
 **English** · [Português (Brasil)](README.pt-BR.md)
 
@@ -13,12 +13,12 @@ On the first day, add the instructor as a repository collaborator, using the ema
 ## Team
 
 - **Class:** TDS — mixed groups 6570, 6756, and 6863
-- **Tech Lead:**
-- **Presentation lead:**
+- **Tech Lead:** Levi
+- **Presentation lead:** Lucas
 - **Members:**
-  - Levi — GitHub
-  - Lucas — GitHub
-  - Giovana (6863) — GitHub
+  - Levi — Levi-dev6638
+  - Lucas — martinszvx 
+  - Giovana (6863) — Giovana-Bernardes
 
 ## Theme / area
 
@@ -26,11 +26,22 @@ Opportunities board (Mural de oportunidades) — campus life and community
 
 ## Problem
 
-(what problem you are solving, and for whom)
+Students find job openings, courses, and events scattered across various groups, social media, and physical bulletin boards. This makes it difficult to search for them, keep track of deadlines, and identify opportunities that align with their interests and availability.
 
 ## Solution
 
-(what the application does and what the MVP covers)
+NextHub centralizes opportunities and allows companies to publish listings quickly. Candidates can search and filter opportunities, complete their profiles, upload a PDF resume, save listings, and apply for positions. The system highlights explainable recommendations based on interests, work format, and availability.
+
+## MVP
+
+- Complete opportunity registration for recruiters.
+- Opportunity listings, search, and filters by type, format, and subject.
+- Dedicated details page for each opportunity.
+- Student profiles with interests, availability, courses, and PDF resume uploads.
+- Visible recommendations with explanations for each match.
+- Integrated bookmarking and application features.
+- Candidate management and PDF resume access for companies.
+- Light/dark themes and responsive navigation, featuring a Sidebar on desktop and a Bottom Bar on mobile.
 
 ## Stack
 
