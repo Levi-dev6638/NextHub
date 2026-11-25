@@ -1,0 +1,100 @@
+[
+  {
+    "id": "a1",
+    "userId": "u-student",
+    "opportunityId": "o1",
+    "status": "Em análise",
+    "createdAt": "2026-11-24T14:00:00Z"
+  },
+  {
+    "id": "a2",
+    "userId": "u-student2",
+    "opportunityId": "o7",
+    "status": "Enviada",
+    "createdAt": "2026-11-23T11:00:00Z"
+  },
+  {
+    "id": "a3",
+    "userId": "u-student",
+    "opportunityId": "o7",
+    "status": "Aprovada",
+    "createdAt": "2026-11-20T11:00:00Z"
+  },
+  {
+    "id": "a4",
+    "userId": "u-student2",
+    "opportunityId": "o11",
+    "status": "Recusada",
+    "createdAt": "2026-11-19T11:00:00Z"
+  },
+  {
+    "id": "a5",
+    "userId": "u-student3",
+    "opportunityId": "o1",
+    "status": "Em análise",
+    "createdAt": "2026-11-25T17:52:00.975Z"
+  },
+  {
+    "id": "a6",
+    "userId": "u-student4",
+    "opportunityId": "o7",
+    "status": "Enviada",
+    "createdAt": "2026-11-25T16:52:00.975Z"
+  },
+  {
+    "id": "a7",
+    "userId": "u-student5",
+    "opportunityId": "o11",
+    "status": "Em análise",
+    "createdAt": "2026-11-25T15:52:00.975Z"
+  },
+  {
+    "id": "a8",
+    "userId": "u-student6",
+    "opportunityId": "o9",
+    "status": "Aprovada",
+    "createdAt": "2026-11-25T14:52:00.975Z"
+  },
+  {
+    "id": "a9",
+    "userId": "u-student7",
+    "opportunityId": "o13",
+    "status": "Em análise",
+    "createdAt": "2026-11-25T13:52:00.975Z"
+  },
+  {
+    "id": "a10",
+    "userId": "u-student8",
+    "opportunityId": "o16",
+    "status": "Recusada",
+    "createdAt": "2026-11-25T12:52:00.975Z"
+  },
+  {
+    "id": "a11",
+    "userId": "u-student3",
+    "opportunityId": "o17",
+    "status": "Enviada",
+    "createdAt": "2026-11-25T11:52:00.975Z"
+  },
+  {
+    "id": "a12",
+    "userId": "u-student4",
+    "opportunityId": "o18",
+    "status": "Em análise",
+    "createdAt": "2026-11-25T10:52:00.975Z"
+  },
+  {
+    "id": "a13",
+    "userId": "u-student5",
+    "opportunityId": "o20",
+    "status": "Enviada",
+    "createdAt": "2026-11-25T09:52:00.975Z"
+  },
+  {
+    "id": "a14",
+    "userId": "u-student7",
+    "opportunityId": "o19",
+    "status": "Aprovada",
+    "createdAt": "2026-11-25T08:52:00.975Z"
+  }
+]

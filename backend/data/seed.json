@@ -1,0 +1,579 @@
+{
+  "users": [
+    {
+      "id": "u-student",
+      "name": "Ana Costa",
+      "email": "ana@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "phone": "(11) 99999-1000",
+        "institution": "Universidade Metropolitana",
+        "education": "Análise e Desenvolvimento de Sistemas",
+        "interests": "Tecnologia, Desenvolvimento web",
+        "format": "Remoto",
+        "availability": "30 horas semanais"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-company",
+      "name": "Equipe de Talentos",
+      "email": "talentos@nexthub.demo",
+      "role": "company",
+      "profile": {},
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-student2",
+      "name": "Lucas Martins",
+      "email": "lucas@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "institution": "Centro Universitário Horizonte",
+        "education": "Design Digital",
+        "interests": "Design, UX",
+        "format": "Híbrido"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-company2",
+      "name": "Instituto Trilhas",
+      "email": "contato@trilhas.demo",
+      "role": "company",
+      "profile": {},
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-student3",
+      "name": "Mariana Alves",
+      "email": "mariana@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "institution": "Universidade Horizonte",
+        "education": "Engenharia de Software",
+        "interests": "Tecnologia, Front-end",
+        "format": "Remoto",
+        "availability": "30 horas semanais"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-student4",
+      "name": "Rafael Lima",
+      "email": "rafael@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "institution": "Universidade Horizonte",
+        "education": "Sistemas de Informação",
+        "interests": "QA, Tecnologia",
+        "format": "Híbrido",
+        "availability": "30 horas semanais"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-student5",
+      "name": "Beatriz Souza",
+      "email": "bia@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "institution": "Universidade Horizonte",
+        "education": "Design Digital",
+        "interests": "Design, UX",
+        "format": "Remoto",
+        "availability": "30 horas semanais"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-student6",
+      "name": "Pedro Nunes",
+      "email": "pedro@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "institution": "Universidade Horizonte",
+        "education": "Administração",
+        "interests": "Marketing, Negócios",
+        "format": "Presencial",
+        "availability": "30 horas semanais"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-student7",
+      "name": "Camila Rocha",
+      "email": "camila@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "institution": "Universidade Horizonte",
+        "education": "Ciência da Computação",
+        "interests": "Dados, Python",
+        "format": "Remoto",
+        "availability": "30 horas semanais"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    },
+    {
+      "id": "u-student8",
+      "name": "João Ribeiro",
+      "email": "joao@nexthub.demo",
+      "role": "student",
+      "profile": {
+        "institution": "Universidade Horizonte",
+        "education": "Comunicação Social",
+        "interests": "Conteúdo, Comunicação",
+        "format": "Híbrido",
+        "availability": "30 horas semanais"
+      },
+      "password": "$2a$10$pLtUatX.cxZeJKWa3HrWueaaFE5GPQ9TYa43F/phA6VSsrZgNWPP2"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "o1",
+      "ownerId": "u-company",
+      "type": "Estágio",
+      "title": "Estágio em Desenvolvimento Front-end",
+      "company": "Nuvem Labs",
+      "area": "Tecnologia",
+      "subject": "Desenvolvimento web",
+      "format": "Remoto",
+      "description": "Construa experiências digitais acessíveis junto de uma equipe multidisciplinar. Você terá mentoria e contato com projetos reais.",
+      "requirements": "HTML, CSS e curiosidade por JavaScript.",
+      "responsibilities": "Implementar interfaces e participar de revisões de código.",
+      "deadline": "2026-12-20",
+      "hours": "30 horas semanais",
+      "internal": true,
+      "createdAt": "2026-11-24T12:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o2",
+      "ownerId": "u-company",
+      "type": "Jovem Aprendiz",
+      "title": "Jovem Aprendiz — Operações Digitais",
+      "company": "Ponto Norte",
+      "area": "Negócios",
+      "subject": "Operações",
+      "format": "Híbrido",
+      "description": "Primeira experiência profissional em uma equipe que apoia produtos digitais. Trilha de aprendizagem e acompanhamento próximo.",
+      "requirements": "Ensino médio em andamento ou concluído.",
+      "deadline": "2026-12-12",
+      "hours": "20 horas semanais",
+      "internal": true,
+      "createdAt": "2026-11-23T13:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o3",
+      "ownerId": "u-company2",
+      "type": "Curso",
+      "title": "JavaScript do zero ao primeiro projeto",
+      "company": "Instituto Trilhas",
+      "area": "Tecnologia",
+      "subject": "Programação",
+      "format": "Remoto",
+      "description": "Curso introdutório com exercícios práticos, fundamentos da linguagem e projeto final orientado.",
+      "requirements": "Acesso a computador e internet.",
+      "link": "https://example.com/curso-js",
+      "internal": false,
+      "hours": "24 horas",
+      "createdAt": "2026-11-22T10:30:00Z",
+      "active": true
+    },
+    {
+      "id": "o4",
+      "ownerId": "u-company2",
+      "type": "Curso",
+      "title": "Fundamentos de UX e prototipação",
+      "company": "Instituto Trilhas",
+      "area": "Design",
+      "subject": "UX Design",
+      "format": "Remoto",
+      "description": "Aprenda pesquisa, jornadas e protótipos de baixa fidelidade em uma experiência de aprendizagem guiada.",
+      "link": "https://example.com/ux",
+      "internal": false,
+      "hours": "16 horas",
+      "createdAt": "2026-11-21T09:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o5",
+      "ownerId": "u-company",
+      "type": "Evento",
+      "title": "Conecta Tech — encontro de carreiras",
+      "company": "Comunidade Conecta",
+      "area": "Tecnologia",
+      "subject": "Carreira em tecnologia",
+      "format": "Presencial",
+      "location": "São Paulo, SP",
+      "description": "Um dia de conversas com profissionais, oficinas e networking para quem está começando na tecnologia.",
+      "deadline": "2026-12-02",
+      "link": "https://example.com/conecta",
+      "internal": false,
+      "createdAt": "2026-11-20T15:30:00Z",
+      "active": true
+    },
+    {
+      "id": "o6",
+      "ownerId": "u-company",
+      "type": "Freelancer",
+      "title": "Freelancer — landing page para ONG",
+      "company": "Impacto Aberto",
+      "area": "Design",
+      "subject": "Web design",
+      "format": "Remoto",
+      "description": "Projeto remunerado para criar uma landing page responsiva e acessível para uma organização social.",
+      "requirements": "Portfólio com trabalhos de interface.",
+      "hours": "Projeto de 3 semanas",
+      "link": "https://example.com/projeto",
+      "internal": false,
+      "createdAt": "2026-11-19T12:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o7",
+      "ownerId": "u-company",
+      "type": "Estágio",
+      "title": "Estágio em QA e Automação",
+      "company": "Orbe Sistemas",
+      "area": "Tecnologia",
+      "subject": "Qualidade de software",
+      "format": "Híbrido",
+      "description": "Apoie testes manuais e automatizados, documente cenários e ajude a melhorar a qualidade dos produtos.",
+      "requirements": "Lógica de programação e atenção a detalhes.",
+      "deadline": "2026-12-15",
+      "hours": "30 horas semanais",
+      "internal": true,
+      "createdAt": "2026-11-18T16:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o8",
+      "ownerId": "u-company2",
+      "type": "Evento",
+      "title": "Hackathon Cidades Mais Verdes",
+      "company": "Rede Urbana",
+      "area": "Tecnologia",
+      "subject": "Hackathon e sustentabilidade",
+      "format": "Híbrido",
+      "description": "Forme uma equipe para criar soluções digitais para desafios de mobilidade e sustentabilidade urbana.",
+      "deadline": "2026-12-07",
+      "link": "https://example.com/hackathon",
+      "internal": false,
+      "createdAt": "2026-11-17T10:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o9",
+      "ownerId": "u-company",
+      "type": "Jovem Aprendiz",
+      "title": "Aprendiz de Comunicação e Conteúdo",
+      "company": "Viva Cultura",
+      "area": "Marketing",
+      "subject": "Comunicação",
+      "format": "Presencial",
+      "location": "Campinas, SP",
+      "description": "Apoio à produção de conteúdo para canais digitais e organização de materiais de comunicação.",
+      "requirements": "Boa comunicação e vontade de aprender.",
+      "deadline": "2026-12-18",
+      "hours": "24 horas semanais",
+      "internal": true,
+      "createdAt": "2026-11-16T12:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o10",
+      "ownerId": "u-company2",
+      "type": "Curso",
+      "title": "Introdução a dados com Python",
+      "company": "Instituto Trilhas",
+      "area": "Tecnologia",
+      "subject": "Dados e Python",
+      "format": "Remoto",
+      "description": "Explore planilhas, análise exploratória e visualização de dados usando Python em atividades práticas.",
+      "link": "https://example.com/dados",
+      "internal": false,
+      "hours": "20 horas",
+      "createdAt": "2026-11-15T13:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o11",
+      "ownerId": "u-company",
+      "type": "Estágio",
+      "title": "Estágio em Design de Produto",
+      "company": "Estúdio Vértice",
+      "area": "Design",
+      "subject": "Product Design",
+      "format": "Híbrido",
+      "description": "Participe de pesquisas, protótipos e validações de uma plataforma usada por pequenos negócios.",
+      "requirements": "Interesse em Figma e design centrado no usuário.",
+      "deadline": "2026-12-22",
+      "hours": "30 horas semanais",
+      "internal": true,
+      "createdAt": "2026-11-14T11:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o12",
+      "ownerId": "u-company2",
+      "type": "Freelancer",
+      "title": "Freelancer — identidade visual para podcast",
+      "company": "Papo de Futuro",
+      "area": "Design",
+      "subject": "Identidade visual",
+      "format": "Remoto",
+      "description": "Crie uma identidade visual simples e kit de peças para o lançamento de um podcast sobre primeiro emprego.",
+      "requirements": "Apresentar portfólio de design.",
+      "hours": "Projeto de 2 semanas",
+      "link": "https://example.com/podcast",
+      "internal": false,
+      "createdAt": "2026-11-13T14:00:00Z",
+      "active": true
+    },
+    {
+      "id": "o13",
+      "ownerId": "u-company",
+      "title": "Estágio em Dados e BI",
+      "company": "Vértice Analytics",
+      "type": "Estágio",
+      "area": "Tecnologia",
+      "subject": "Dados e Python",
+      "format": "Remoto",
+      "description": "Apoio a análises de dados, criação de dashboards e organização de indicadores.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-10",
+      "internal": true,
+      "createdAt": "2026-11-25T17:52:00.974Z",
+      "active": true
+    },
+    {
+      "id": "o14",
+      "ownerId": "u-company2",
+      "title": "Jovem Aprendiz — Atendimento Digital",
+      "company": "Conecta Serviços",
+      "type": "Jovem Aprendiz",
+      "area": "Negócios",
+      "subject": "Atendimento",
+      "format": "Híbrido",
+      "description": "Aprenda rotinas de atendimento digital com acompanhamento de uma equipe experiente.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-11",
+      "internal": true,
+      "createdAt": "2026-11-24T17:52:00.975Z",
+      "active": true
+    },
+    {
+      "id": "o15",
+      "ownerId": "u-company",
+      "title": "Curso de Figma para interfaces",
+      "company": "Escola Criativa",
+      "type": "Curso",
+      "area": "Design",
+      "subject": "UX e Figma",
+      "format": "Remoto",
+      "description": "Aprenda a criar protótipos de interfaces e organizar componentes no Figma.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-12",
+      "internal": false,
+      "createdAt": "2026-11-23T17:52:00.975Z",
+      "active": true
+    },
+    {
+      "id": "o16",
+      "ownerId": "u-company2",
+      "title": "Estágio em Marketing de Conteúdo",
+      "company": "Ponto de Ideias",
+      "type": "Estágio",
+      "area": "Marketing",
+      "subject": "Conteúdo e comunicação",
+      "format": "Presencial",
+      "description": "Participe da criação de conteúdo para redes sociais e campanhas digitais.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-13",
+      "internal": true,
+      "createdAt": "2026-11-22T17:52:00.975Z",
+      "active": true
+    },
+    {
+      "id": "o17",
+      "ownerId": "u-company",
+      "title": "Freelancer — dashboard de vendas",
+      "company": "Métrica Simples",
+      "type": "Freelancer",
+      "area": "Tecnologia",
+      "subject": "Dashboard",
+      "format": "Remoto",
+      "description": "Projeto freelance para montar um painel web de acompanhamento comercial.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-14",
+      "internal": false,
+      "createdAt": "2026-11-21T17:52:00.975Z",
+      "active": true
+    },
+    {
+      "id": "o18",
+      "ownerId": "u-company2",
+      "title": "Hackathon de soluções para educação",
+      "company": "Impacta Jovem",
+      "type": "Evento",
+      "area": "Tecnologia",
+      "subject": "Hackathon",
+      "format": "Híbrido",
+      "description": "Encontro para equipes criarem protótipos que resolvam desafios de aprendizagem.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-15",
+      "internal": false,
+      "createdAt": "2026-11-20T17:52:00.975Z",
+      "active": true
+    },
+    {
+      "id": "o19",
+      "ownerId": "u-company",
+      "title": "Curso introdutório de Python",
+      "company": "Instituto Trilhas",
+      "type": "Curso",
+      "area": "Tecnologia",
+      "subject": "Python e dados",
+      "format": "Remoto",
+      "description": "Fundamentos de Python com exercícios orientados e pequenos projetos.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-16",
+      "internal": false,
+      "createdAt": "2026-11-19T17:52:00.975Z",
+      "active": true
+    },
+    {
+      "id": "o20",
+      "ownerId": "u-company2",
+      "title": "Estágio em UX Research",
+      "company": "Estúdio Vértice",
+      "type": "Estágio",
+      "area": "Design",
+      "subject": "UX Research",
+      "format": "Híbrido",
+      "description": "Ajude a planejar entrevistas, organizar descobertas e melhorar jornadas digitais.",
+      "requirements": "Interesse em aprender e colaborar em equipe.",
+      "deadline": "2027-01-17",
+      "internal": true,
+      "createdAt": "2026-11-18T17:52:00.975Z",
+      "active": true
+    }
+  ],
+  "applications": [
+    {
+      "id": "a1",
+      "userId": "u-student",
+      "opportunityId": "o1",
+      "status": "Em análise",
+      "createdAt": "2026-11-24T14:00:00Z"
+    },
+    {
+      "id": "a2",
+      "userId": "u-student2",
+      "opportunityId": "o7",
+      "status": "Enviada",
+      "createdAt": "2026-11-23T11:00:00Z"
+    },
+    {
+      "id": "a3",
+      "userId": "u-student",
+      "opportunityId": "o7",
+      "status": "Aprovada",
+      "createdAt": "2026-11-20T11:00:00Z"
+    },
+    {
+      "id": "a4",
+      "userId": "u-student2",
+      "opportunityId": "o11",
+      "status": "Recusada",
+      "createdAt": "2026-11-19T11:00:00Z"
+    },
+    {
+      "id": "a5",
+      "userId": "u-student3",
+      "opportunityId": "o1",
+      "status": "Em análise",
+      "createdAt": "2026-11-25T17:52:00.975Z"
+    },
+    {
+      "id": "a6",
+      "userId": "u-student4",
+      "opportunityId": "o7",
+      "status": "Enviada",
+      "createdAt": "2026-11-25T16:52:00.975Z"
+    },
+    {
+      "id": "a7",
+      "userId": "u-student5",
+      "opportunityId": "o11",
+      "status": "Em análise",
+      "createdAt": "2026-11-25T15:52:00.975Z"
+    },
+    {
+      "id": "a8",
+      "userId": "u-student6",
+      "opportunityId": "o9",
+      "status": "Aprovada",
+      "createdAt": "2026-11-25T14:52:00.975Z"
+    },
+    {
+      "id": "a9",
+      "userId": "u-student7",
+      "opportunityId": "o13",
+      "status": "Em análise",
+      "createdAt": "2026-11-25T13:52:00.975Z"
+    },
+    {
+      "id": "a10",
+      "userId": "u-student8",
+      "opportunityId": "o16",
+      "status": "Recusada",
+      "createdAt": "2026-11-25T12:52:00.975Z"
+    },
+    {
+      "id": "a11",
+      "userId": "u-student3",
+      "opportunityId": "o17",
+      "status": "Enviada",
+      "createdAt": "2026-11-25T11:52:00.975Z"
+    },
+    {
+      "id": "a12",
+      "userId": "u-student4",
+      "opportunityId": "o18",
+      "status": "Em análise",
+      "createdAt": "2026-11-25T10:52:00.975Z"
+    },
+    {
+      "id": "a13",
+      "userId": "u-student5",
+      "opportunityId": "o20",
+      "status": "Enviada",
+      "createdAt": "2026-11-25T09:52:00.975Z"
+    },
+    {
+      "id": "a14",
+      "userId": "u-student7",
+      "opportunityId": "o19",
+      "status": "Aprovada",
+      "createdAt": "2026-11-25T08:52:00.975Z"
+    }
+  ],
+  "favorites": [
+    {
+      "userId": "u-student",
+      "opportunityId": "o3"
+    },
+    {
+      "userId": "u-student",
+      "opportunityId": "o5"
+    },
+    {
+      "userId": "u-student2",
+      "opportunityId": "o11"
+    }
+  ]
+}
