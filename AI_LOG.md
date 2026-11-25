@@ -53,3 +53,17 @@ Never commit API keys, passwords or other secrets. Those values go in a `.env` f
 - **What the AI generated:** bilingual updates to `AI_LOG.md`, `AI_LOG.pt-BR.md`, `DECISIONS.md` and `DECISIONS.pt-BR.md`, preserving the existing root-level documentation structure.
 - **What the team kept:** the English files remain the main versions and the Portuguese files mirror the corresponding content.
 - **What the team corrected or rejected, and why:** placeholders and illustrative claims must not be presented as implementation evidence. Only repository-supported decisions and implementation details are included as confirmed facts.
+
+### 25/11/2026 — Frontend project setup
+
+- **Main prompt:** Initialize a frontend project for the NextHub interface and organize the frontend folder for development.
+- **What the AI generated:** the repository history shows a Vite and React project setup under `Front-end/`, including `package.json`, the Vite configuration, the React entry point and the initial application component. At this stage, `App.jsx` is still the generated Vite starter interface, not a NextHub feature screen.
+- **What the team kept:** the React and Vite structure is present in the repository and provides the base for later frontend implementation.
+- **What the team corrected or rejected, and why:** the generated starter content was not documented as a NextHub implementation. Only confirmed project scaffolding is recorded; feature screens, filters, favorites and recommendations require corresponding source code before they may be marked complete.
+
+### 25/11/2026 — Backend project setup
+
+- **Main prompt:** Initialize a Java backend project for the NextHub API.
+- **What the AI generated:** repository history confirms a Spring Boot 4.2 project under `Back-end/`, using Java 17 and Maven. The committed source contains the Spring application entry point and starter validation and web dependencies; there is currently no NextHub REST endpoint implementation in the checked source.
+- **What the team kept:** the Spring Boot project structure, Maven wrapper, application configuration and test setup are retained as the backend foundation.
+- **What the team corrected or rejected, and why:** no API, persistence, authentication or Multer implementation is claimed because no corresponding source exists in the checked code. The setup is documented only as initialization, not as a completed backend flow.

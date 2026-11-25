@@ -30,10 +30,20 @@ Copy the template below whenever you need a new entry.
 - **Alternatives considered:** reducing the MVP to a static wall; adding a complete company selection process; creating a vacancy marketplace with external search and institutional integrations.
 - **Rationale:** a complete flow is more valuable to the presentation than a long list of partially implemented features. The scope covers search, recommendations, basic applications and publishing without requiring external services or complex infrastructure.
 
-## 24/11/2026 — Final MVP stack
-- **Decision:** use HTML5, CSS3 and JavaScript ES6+ on the frontend, Node.js with Express on the backend, Multer for PDF résumé uploads and local JSON files for users, opportunities and applications.
-- **Alternatives considered:** Java with Spring Boot on the backend; React or Vue on the frontend; external SQL/NoSQL databases.
-- **Rationale:** this combination has low environment complexity and runs locally in VS Code. HTML/CSS/JavaScript is practical for collaborative development within one week, Express provides a straightforward REST API and JSON keeps the demo stable and offline.
+## 24/11/2026 — Planned MVP stack
+- **Decision:** plan the MVP with a React/Vite frontend and a Java/Spring Boot backend, subject to the implementation that is actually committed.
+- **Alternatives considered:** plain HTML/CSS/JavaScript with Node.js and Express; external SQL/NoSQL databases.
+- **Rationale:** the repository's committed foundation uses React 19 with Vite for the frontend and Java 17 with Spring Boot for the backend. This record describes the documented plan and must not imply that API or feature implementation was completed before source evidence existed.
+
+## 25/11/2026 — Frontend and backend project scaffolding
+- **Decision:** initialize the frontend in `Front-end/` with React and Vite, and the backend in `Back-end/` with Java 17 and Spring Boot.
+- **Alternatives considered:** implementing frontend and backend in a single Node.js project; keeping the project in documentation-only structure; using a database-backed backend initially.
+- **Rationale:** the committed setup provides separate development areas and working build configuration. The frontend currently contains the Vite starter application, and the backend contains the Spring application entry point and base dependencies; neither should be described as a complete NextHub implementation yet.
+
+## 25/11/2026 — Repository implementation verification status
+- **Decision:** do not mark requested or conversation-only features as implemented until their source code or verifiable commit exists in the repository.
+- **Alternatives considered:** presenting ZIP updates or conversation reports as completed; documenting every requested behavior as shipped.
+- **Rationale:** current verified evidence includes project scaffolding and an initial React starter and Spring application. Opportunity, candidate, application, favorites and PDF flows must be confirmed in source before being added as completed features.
 
 ## 24/11/2026 — Visual identity and role-based navigation
 - **Decision:** adopt the NextHub name, a light interface with an accessible dark theme, dark blue as the main color and category badges: orange for Internship, pink for Event, green for Freelancer and purple for Course. Desktop uses a fixed Sidebar and mobile uses a Bottom Navigation Bar.
@@ -69,8 +79,3 @@ Copy the template below whenever you need a new entry.
 - **Decision:** exclude points, gamification and ranking; complete company selection workflows; automatic internet scraping; complex external databases; a permanent theme button in mobile navigation; and separate Saved tabs.
 - **Alternatives considered:** implementing all extras during the week; retaining only a partial selection of them.
 - **Rationale:** these items would increase implementation time, technical complexity or visual clutter without being essential to validate the central problem. The team prioritizes a professional, direct and stable flow.
-
-## 25/11/2026 — Repository implementation verification status
-- **Decision:** document the proposed stack and MVP scope, but do not mark application features as implemented until their source code or a verifiable commit exists in the repository.
-- **Alternatives considered:** presenting conversation and ZIP-based updates as completed implementation; restricting the log strictly to current source files.
-- **Rationale:** the current commit contains project documentation only. This keeps the decisions historically useful without converting requested or unverified features into confirmed implementation facts.

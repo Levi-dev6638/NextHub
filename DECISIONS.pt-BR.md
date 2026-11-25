@@ -31,11 +31,20 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Alternativas consideradas:** reduzir o MVP a um mural estático; adicionar um processo seletivo completo; criar um marketplace de vagas com busca externa e integração institucional.
 - **Motivo:** o fluxo completo é mais valioso para a apresentação do que uma lista extensa de funcionalidades pela metade. O escopo cobre pesquisa, recomendação, candidatura básica e publicação sem exigir serviços externos ou infraestrutura complexa.
 
-## 24/11/2026 — Stack final do MVP
+## 24/11/2026 — Stack planejada do MVP
+- **Decisão:** planejar o MVP com frontend React/Vite e backend Java/Spring Boot, sujeito à implementação realmente versionada.
+- **Alternativas consideradas:** HTML/CSS/JavaScript puro com Node.js e Express; bancos SQL/NoSQL externos.
+- **Motivo:** a base confirmada no repositório usa React 19 com Vite no frontend e Java 17 com Spring Boot no backend. Este registro descreve o plano documentado e não afirma que API ou recursos estavam concluídos antes de haver evidência no código.
 
-- **Decisão:** usar HTML5, CSS3 e JavaScript ES6+ no front-end, Node.js com Express no back-end, Multer para upload de currículo PDF e arquivos JSON locais para usuários, oportunidades e candidaturas.
-- **Alternativas consideradas:** Java com Spring Boot no back-end; React ou Vue no front-end; bancos SQL/NoSQL externos.
-- **Motivo:** esta combinação permite integração simples, baixa complexidade de ambiente e execução local no VS Code. HTML/CSS/JS facilita o desenvolvimento colaborativo no prazo de uma semana, enquanto Express fornece uma API REST direta e JSON garante demonstração offline estável.
+## 25/11/2026 — Inicialização do frontend e do backend
+- **Decisão:** inicializar o frontend em `Front-end/` com React e Vite e o backend em `Back-end/` com Java 17 e Spring Boot.
+- **Alternativas consideradas:** implementar frontend e backend em um único projeto Node.js; manter o projeto apenas em estrutura documental; iniciar o backend já conectado a banco de dados.
+- **Motivo:** a configuração versionada fornece áreas separadas de desenvolvimento e configurações iniciais de build. O frontend contém a aplicação inicial do Vite e o backend contém a classe principal Spring e dependências básicas; nenhum dos dois deve ser descrito como implementação completa do NextHub neste estágio.
+
+## 25/11/2026 — Estado de verificação da implementação no repositório
+- **Decisão:** não marcar recursos solicitados ou relatados apenas em conversa como implementados até que exista código-fonte ou commit verificável no repositório.
+- **Alternativas consideradas:** apresentar atualizações em ZIP ou relatórios de conversa como concluídos; documentar todos os comportamentos solicitados como entregues.
+- **Motivo:** as evidências atuais confirmadas são a estrutura dos projetos, a aplicação inicial React e a aplicação inicial Spring. Fluxos de oportunidades, candidatos, candidaturas, favoritos e PDF devem ser confirmados no código antes de serem registrados como concluídos.
 
 ## 24/11/2026 — Identidade visual e navegação por papel
 
@@ -78,8 +87,3 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Decisão:** deixar fora sistema de pontuação, gamificação e ranking; processo seletivo completo das empresas; varredura automática da internet; bancos externos complexos; botão permanente de tema na navegação mobile; e abas separadas de Salvos.
 - **Alternativas consideradas:** implementar todos esses extras durante a semana; manter apenas uma seleção parcial desses recursos.
 - **Motivo:** esses itens aumentariam o tempo de implementação, a complexidade técnica ou a poluição visual sem serem essenciais para validar o problema central. O grupo prioriza um fluxo profissional, direto e estável.
-
-## 25/11/2026 — Estado de verificação da implementação no repositório
-- **Decisão:** registrar a stack e o escopo pretendidos do MVP, mas não marcar recursos da aplicação como implementados até que seu código-fonte ou um commit verificável exista no repositório.
-- **Alternativas consideradas:** apresentar conversas e atualizações baseadas em ZIP como implementação concluída; restringir o registro exclusivamente aos arquivos-fonte atuais.
-- **Motivo:** o commit atual contém apenas documentação do projeto. Isso mantém o registro historicamente útil sem transformar recursos solicitados ou não verificados em fatos confirmados de implementação.
