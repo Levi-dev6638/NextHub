@@ -14,12 +14,13 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 
 ## Ferramentas
 
-- (ex.: ChatGPT, GitHub Copilot, Cursor, outro)
+- GitHub Copilot, claude, gemini
 
 ## Modelo de registro
 
 ```markdown
 ### [data] — [tarefa ou trecho]
+
 - **Prompt principal:**
 - **O que a IA gerou:**
 - **O que o time aproveitou:**
@@ -35,9 +36,9 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **O que o time aproveitou:** a estrutura do middleware e o fluxo de verificação do token.
 - **O que o time corrigiu ou rejeitou, e por quê:** atualizamos a biblioteca, movemos o segredo para variável de ambiente e incluímos testes. O exemplo de rota foi reescrito para se adequar ao nosso modelo de usuário.
 
-### [data] — [tarefa ou trecho]
+### 24/11/2026 — Organização do escopo e criação do protótipo inicial do Mural de Oportunidades
 
-- **Prompt principal:**
-- **O que a IA gerou:**
-- **O que o time aproveitou:**
-- **O que o time corrigiu ou rejeitou, e por quê:**
+- **Prompt principal:** "Como Engenheiro de Software Sênior e Designer UI/UX, organize o escopo oficial do projeto e crie do zero um protótipo funcional completo e pronto para apresentação do Mural de Oportunidades NextHub para estudantes e jovens. Priorize um fluxo navegável de uma semana, usando HTML/CSS/JavaScript puro no frontend, Node.js com Express no backend, Multer para currículos PDF e dados locais em JSON. Inclua os perfis de candidato e empresa, cadastro e perfil completo, recomendações por match, busca e filtros, salvamento e candidatura, publicação de oportunidades, gestão de candidatos e download de currículos. Registre também o que entrou no escopo e o que foi rejeitado ou retirado, com justificativas técnicas e estratégicas."
+- **O que a IA gerou:** uma consolidação oficial das decisões adotadas e dos itens recusados; uma estrutura full stack em HTML/CSS/JavaScript, Node.js/Express e JSON; API REST, upload real de PDFs, dados fictícios pré-populados e telas navegáveis para candidato e empresa. Também foram definidos o nome NextHub, as recomendações por interesses/formato/disponibilidade, a navegação responsiva, o tema claro/escuro e os fluxos de perfil, mural, candidatura, publicação e gestão de candidatos.
+- **O que o time aproveitou:** a organização clara do escopo, a arquitetura local simples e estável, os dados fictícios realistas, o fluxo completo de estudante e empresa, a identidade visual moderna, a navegação desktop/mobile e a centralização das configurações.
+- **O que o time corrigiu ou rejeitou, e por quê:** o time não delegou as decisões à IA. Mantém gamificação e pontuação fora do escopo, assim como abas separadas de Salvos, botão solto de tema no mobile e frameworks ou bancos externos complexos. Optou por integrar Salvos a Candidaturas, colocar tema e logout em Configurações e usar apenas HTML/CSS/JavaScript, Node.js/Express e JSON para reduzir clics, complexidade visual e riscos de conexão na apresentação.
