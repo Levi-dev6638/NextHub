@@ -5,14 +5,14 @@
   "description": "Plataforma de oportunidades para estudantes e empresas",
   "main": "frontend/index.html",
   "scripts": {
-    "dev:backend": "cd back-end && mvnw.cmd spring-boot:run",
-    "start:backend": "cd back-end && mvnw.cmd spring-boot:run",
+    "dev:backend": "cd Back-end && mvnw.cmd spring-boot:run",
+    "start:backend": "cd Back-end && mvnw.cmd spring-boot:run",
     "dev:frontend": "npm --prefix frontend run dev",
     "build:frontend": "npm --prefix frontend run build",
     "preview:frontend": "npm --prefix frontend run preview",
     "lint:frontend": "npm --prefix frontend run lint",
-    "test": "cd back-end && mvnw.cmd test",
-    "start": "cd back-end && mvnw.cmd spring-boot:run"
+    "test": "cd Back-end && mvnw.cmd test",
+    "start": "cd Back-end && mvnw.cmd spring-boot:run"
   },
   "dependencies": {}
 }
