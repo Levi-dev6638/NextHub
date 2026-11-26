@@ -3,20 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "description": "Plataforma de oportunidades para estudantes e empresas",
-  "main": "backend/server.js",
+  "main": "frontend/index.html",
   "scripts": {
-    "dev:backend": "node backend/server.js",
-    "start:backend": "node backend/server.js",
+    "dev:backend": "cd back-end && mvnw.cmd spring-boot:run",
+    "start:backend": "cd back-end && mvnw.cmd spring-boot:run",
     "dev:frontend": "npm --prefix frontend run dev",
     "build:frontend": "npm --prefix frontend run build",
     "preview:frontend": "npm --prefix frontend run preview",
-    "reset": "python scripts/reset_db.py",
-    "start": "node backend/server.js"
+    "lint:frontend": "npm --prefix frontend run lint",
+    "test": "cd back-end && mvnw.cmd test",
+    "start": "cd back-end && mvnw.cmd spring-boot:run"
   },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "express": "^4.21.2",
-    "express-session": "^1.18.1",
-    "multer": "^1.4.5-lts.1"
-  }
+  "dependencies": {}
 }
