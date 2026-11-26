@@ -1,97 +1,154 @@
-# [NextHub]
+# NextHub — Opportunities Board
 
 **English** · [Português (Brasil)](README.pt-BR.md)
 
-Fill in this README and keep it up to date. It is part of the delivery and must remain at the **root** of the repository, together with `DECISIONS.md` and `AI_LOG.md` (and their Portuguese versions: `README.pt-BR.md`, `DECISIONS.pt-BR.md` and `AI_LOG.pt-BR.md`).
+NextHub brings student internships, courses, freelance work, and events together in a searchable, personalized opportunities board.
 
-Project documentation must be written in **English** (this file is the main version), with a **Portuguese version** alongside. Keep both versions in sync.
+## Problem and solution
 
-Create, inside the repository, the **folders for each part of the project** you will develop (for example, `/backend`, `/frontend`, `/docs`). How you organize them is the team's choice — describe it in [Folder structure](#folder-structure).
+Students often find opportunities scattered across social networks, group chats, and physical boards. NextHub centralizes listings and helps students find relevant options, keep a résumé and interests on their profile, save opportunities, and track applications. Companies can publish listings and manage applicants.
 
-On the first day, add the instructor as a repository collaborator, using the email **adrianoanschau@gmail.com**.
+## MVP features
+
+- Student and company registration, login, and logout.
+- Student profile with interests, education, preferred format, and availability.
+- PDF résumé upload (maximum 5 MB) and access control for applicants and the relevant company.
+- Opportunity listing, text search, and type, format, subject, and area filters.
+- Opportunity details, explainable recommendations, favorites, and internal or external applications.
+- Company opportunity creation, editing, closing, applicant review, and application status updates.
+- Responsive interface, light/dark theme, and role-specific navigation.
+- Fictional local demonstration data: 20 opportunities, 10 users, and 14 applications.
+
+The internal application flow requires a student résumé. External listings link to their published application URL. Recommendations are deterministic matches against profile interests, education, and preferred format; no external AI service is called by the application.
+
+## Technology
+
+- **Frontend:** React 18, Vite 6, JavaScript, and CSS.
+- **Backend:** Java 25, Spring Boot 3.5, Spring Data JPA, Hibernate 6, and Bean Validation.
+- **Persistence:** SQLite at `Back-end/data/nexthub.sqlite`; uploaded résumés are stored in `Back-end/uploads/`.
+- **Tests and quality:** JUnit 5, Spring Boot Test, Maven, ESLint, and GitHub Actions.
+
+## Repository layout
+
+```text
+.
+├── Back-end/
+│   ├── src/main/java/br/com/nexthub/
+│   ├── src/main/resources/application.properties
+│   ├── data/nexthub.sqlite
+│   ├── uploads/
+│   └── pom.xml
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── eslint.config.js
+├── .github/workflows/ci.yml
+├── .env.example
+├── package.json              # Backend scripts and dependencies
+└── README.md
+```
+
+`frontend/` and `Back-end/` form the single active application. The fictional data in `backend/data/seed.json` is imported only on first initialization; runtime data is stored in SQLite. Back up `Back-end/data/nexthub.sqlite` before manual maintenance.
+
+## Prerequisites and setup
+
+- Java 25 or newer.
+- Node.js 22.13 or newer and npm.
+- Maven Wrapper (included).
+
+From the repository root:
+
+```sh
+npm ci
+npm --prefix frontend ci
+copy .env.example .env
+```
+
+On macOS/Linux, use `cp .env.example .env` instead of `copy`. This configures the Vite API URL; the backend uses the defaults in `application.properties` and does not require a `.env` file.
+
+## Run locally
+
+Open two terminals from the repository root.
+
+Terminal 1 — API (PowerShell):
+
+```sh
+cd Back-end
+.\mvnw.cmd spring-boot:run
+```
+
+In Git Bash, macOS, or Linux:
+
+```sh
+cd Back-end
+bash ./mvnw spring-boot:run
+```
+
+Terminal 2 — Vite frontend:
+
+```sh
+npm run dev:frontend
+```
+
+Open <http://localhost:5173>. Vite proxies `/api` requests to `http://localhost:8080`.
+
+The backend creates or updates `Back-end/data/nexthub.sqlite` with Hibernate (`ddl-auto=update`) without deleting existing data.
+
+Demo accounts use the password `demo1234`:
+
+- Student: `ana@nexthub.demo`
+- Company: `talentos@nexthub.demo`
+
+## API endpoints
+
+The Java API preserves the contracts used by the frontend:
+
+- Authentication: `POST /api/auth/register`, `/api/auth/login`, and `/api/auth/logout`; `GET /api/me`.
+- Profile: `PATCH /api/profile`.
+- Opportunities: `GET` and `POST /api/opportunities`; `PATCH` and `DELETE /api/opportunities/{id}`; `GET /api/company/opportunities`.
+- Favorites: `GET /api/favorites` and `POST /api/favorites/{id}`.
+- Applications: `GET /api/applications`, `POST /api/applications/{id}`, and `PATCH /api/applications/{id}`.
+- Résumés: `POST /api/resume` and `GET /api/resume/{id}`.
+
+## Tests and lint
+
+```sh
+npm run lint:frontend
+npm run build:frontend
+```
+
+Run Java tests in a separate terminal. In PowerShell:
+
+```sh
+cd Back-end
+.\mvnw.cmd test
+```
+
+In Git Bash, macOS, or Linux:
+
+```sh
+cd Back-end
+bash ./mvnw test
+```
+
+## CI
+
+GitHub Actions runs on pull requests targeting `main` and on pushes to `main`. The workflow installs both dependency sets, lints the frontend, runs backend integration tests, and builds the frontend. The workflow is configured in `.github/workflows/ci.yml`; its latest remote run has not been checked as part of this local work.
+
+## Persistence, security, and deployment
+
+The main tables represent users, opportunities, applications, favorites, and résumés; recommendations are calculated dynamically from the student profile. Hibernate uses `ddl-auto=update` to create or update the SQLite schema; this is not a replacement for versioned migrations in production. The seed in `backend/data/seed.json` is imported only when the database has no users and does not overwrite existing records. Authentication uses HTTP sessions and BCrypt password hashes. Résumé uploads are limited to 5 MB and are served only to the student owner or a company with an application to its opportunity.
+
+This setup is intended for a local academic demonstration, not a multi-instance production deployment. A public deployment needs durable shared session storage, managed persistence and file storage, HTTPS, and operational backups. No hosted deployment is currently configured.
 
 ## Team
 
 - **Class:** TDS — mixed groups 6570, 6756, and 6863
-- **Tech Lead:** Levi
-- **Presentation lead:** Lucas
-- **Members:**
-  - Levi — Levi-dev6638
-  - Lucas — martinszvx 
-  - Giovana (6863) — Giovana-Bernardes
-
-## Theme / area
-
-Opportunities board (Mural de oportunidades) — campus life and community
-
-## Problem
-
-Students find job openings, courses, and events scattered across various groups, social media, and physical bulletin boards. This makes it difficult to search for them, keep track of deadlines, and identify opportunities that align with their interests and availability.
-
-## Solution
-
-NextHub centralizes opportunities and allows companies to publish listings quickly. Candidates can search and filter opportunities, complete their profiles, upload a PDF resume, save listings, and apply for positions. The system highlights explainable recommendations based on interests, work format, and availability.
-
-## MVP
-
-- Complete opportunity registration for recruiters.
-- Opportunity listings, search, and filters by type, format, and subject.
-- Dedicated details page for each opportunity.
-- Student profiles with interests, availability, courses, and PDF resume uploads.
-- Visible recommendations with explanations for each match.
-- Integrated bookmarking and application features.
-- Candidate management and PDF resume access for companies.
-- Light/dark themes and responsive navigation, featuring a Sidebar on desktop and a Bottom Bar on mobile.
-
-## Stack
-
-(languages, frameworks and libraries; the back-end may be Java, Python or Node.js, alone or combined, as long as they are integrated; the front-end is required — web, desktop or mobile)
-
-## Folder structure
-
-Describe how the repository is organized. Adjust the example below to the team's choice.
-
-```text
-/
-├── README.md
-├── README.pt-BR.md
-├── DECISIONS.md
-├── DECISIONS.pt-BR.md
-├── AI_LOG.md
-├── AI_LOG.pt-BR.md
-├── backend/
-├── frontend/
-└── docs/
-```
-
-## How to run
-
-### Prerequisites
-
-(language versions, package managers, databases, etc.)
-
-### Back-end
-
-```bash
-# commands to install dependencies and start the back-end
-```
-
-### Front-end
-
-```bash
-# commands to install dependencies and start the front-end
-```
-
-## CI/CD
-
-(describe the GitHub Actions pipeline: what runs on each PR and on each push to `main` — at a minimum, build, lint and tests)
-
-## Deploy
-
-(where the application is published, if applicable; or note that automatic deploy has not been set up yet)
+- **Tech lead:** Levi (`Levi-dev6638`)
+- **Presentation lead:** Lucas (`martinszvx`)
+- **Member:** Giovana (`Giovana-Bernardes`)
 
 ## Links
 
-- **Repository:**
-- **Deploy (if any):**
-- **Board / GitHub project (if any):**
+- **Repository:** <https://github.com/Levi-dev6638/mural-de-oportunidades>
+- **Deployment:** Not configured
