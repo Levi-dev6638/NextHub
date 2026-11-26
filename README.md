@@ -81,7 +81,7 @@ In Git Bash, macOS, or Linux:
 
 ```sh
 cd Back-end
-./mvnw spring-boot:run
+bash ./mvnw spring-boot:run
 ```
 
 Terminal 2 — Vite frontend:
@@ -128,7 +128,7 @@ In Git Bash, macOS, or Linux:
 
 ```sh
 cd Back-end
-./mvnw test
+bash ./mvnw test
 ```
 
 ## CI

@@ -40,7 +40,7 @@ jobs:
         run: npm run lint:frontend
 
       - name: Test backend
-        run: cd Back-end && ./mvnw test
+        run: cd Back-end && bash ./mvnw test
 
       - name: Build frontend
         run: npm run build:frontend
