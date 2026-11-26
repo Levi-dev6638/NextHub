@@ -81,3 +81,33 @@ Copy the template below whenever you need a new entry.
 - **Decision:** exclude points, gamification and ranking; complete company selection workflows; automatic internet scraping; complex external databases; a permanent theme button in mobile navigation; and separate Saved tabs.
 - **Alternatives considered:** implementing all extras during the week; retaining only a partial selection of them.
 - **Rationale:** these items would increase implementation time, technical complexity or visual clutter without being essential to validate the central problem. The team prioritizes a professional, direct and stable flow.
+
+**## 25/11/2026 — Separation of frontend and backend**
+
+- **Decision:** Organize the NextHub project into two independent applications: the frontend in the `Front-end/` directory, using React 19 and Vite, and the backend in the `Back-end/` directory, using Java 17 and Spring Boot.
+- **Alternatives considered:** Keeping everything within a single application; using Node.js and Express for the backend; maintaining the initial structure without separating the technologies.
+- **Reasoning:** This separation allows teams to work independently on each layer, simplifies maintenance, and establishes a more organized and scalable architecture.
+
+**## 25/11/2026 — Initializing the frontend with Vite**
+
+- **Decision:** Use Vite to initialize and manage the React frontend application.
+- **Alternatives considered:** Manually configuring the entire React structure; using other initialization tools, such as Create React App.
+- **Reasoning:** Vite offers fast initialization, a development server, and simplified configuration, which facilitates the development and execution of the user interface.
+
+**## 25/11/2026 — Java and Spring Boot-based Backend**
+
+- **Decision:** Use Java 17 and Spring Boot to structure the backend, keeping the files directly within the `Back-end/` folder of the repository.
+- **Alternatives considered:** Using Node.js with Express; nesting the Java project folder inside another `Back-end/` directory.
+- **Reasoning:** Spring Boot provides an organized framework for developing APIs and simplifies the implementation of business logic. Keeping the files directly in the main backend folder avoids unnecessary directory nesting.
+
+**## 25/11/2026 — Communication between frontend and backend**
+
+- **Decision:** Establish communication between React and Spring Boot via an API, using JSON to send and receive data.
+- **Alternatives considered:** Sharing files directly between applications; using Node.js as an intermediary; consolidating the frontend and backend into a single application.
+- **Reasoning:** Communicating via a REST API with JSON keeps the applications independent, utilizes a widely adopted format, and allows each layer to evolve without depending on the internal implementation of the other.
+
+**## 25/11/2026 — Independent application execution**
+
+- **Decision:** Maintain independent startup commands for the frontend and backend, allowing each application to be run and tested separately during development.
+- **Alternatives considered:** Running both applications through a single process; relying on the manual startup of external tools for every change.
+- **Reasoning:** Independent execution facilitates error identification, testing, and parallel development by different teams.
