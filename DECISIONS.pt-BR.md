@@ -19,23 +19,11 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Motivo:**
 ```
 
-## 23/11/2026 — Escolha da stack de back-end (exemplo)
-
-- **Decisão:** usar Node.js com Express no back-end.
-- **Alternativas consideradas:** Java com Spring Boot; Python com FastAPI.
-- **Motivo:** o time já tem mais familiaridade com JavaScript, e o prazo de uma semana favorece uma stack na qual todos conseguem contribuir desde o primeiro dia.
-
 ## 23/11/2026 — Referências de mercado para a experiência do mural
 
 - **Decisão:** usar o **InfoJobs** e o **Indeed** como referências de inspiração para organizar e apresentar as oportunidades no mural.
 - **Alternativas consideradas:** criar uma experiência totalmente original; reproduzir exatamente o layout de uma única plataforma; combinar padrões de múltiplos portais de vagas.
 - **Motivo:** essas plataformas já oferecem padrões claros e familiares, como busca objetiva, filtros úteis e cards concisos com informações essenciais. O mural pode aproveitar esses aprendizados sem copiar os produtos: o objetivo é manter uma navegação simples e criar uma identidade própria, mais próxima da proposta do projeto.
-
-## 23/11/2026 — Separação entre back-end em Java e front-end em Node.js, HTML e CSS
-
-- **Decisão:** usar Java no back-end e Node.js com HTML e CSS no front-end.
-- **Alternativas consideradas:** Node.js com Express em todo o projeto; Java com Spring Boot em todo o projeto; Python com FastAPI no back-end.
-- **Motivo:** a combinação permite explorar duas tecnologias de back-end com propostas diferentes: Java oferece uma base madura e estruturada, enquanto Node.js atende à camada de apresentação e à integração com HTML e CSS. A decisão será validada durante a implementação do MVP e pode ser ajustada caso surjam limitações técnicas ou de integração.
 
 ## 24/11/2026 — Definição oficial do MVP do NextHub
 
@@ -43,11 +31,10 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Alternativas consideradas:** reduzir o MVP a um mural estático; adicionar um processo seletivo completo; criar um marketplace de vagas com busca externa e integração institucional.
 - **Motivo:** o fluxo completo é mais valioso para a apresentação do que uma lista extensa de funcionalidades pela metade. O escopo cobre pesquisa, recomendação, candidatura básica e publicação sem exigir serviços externos ou infraestrutura complexa.
 
-## 24/11/2026 — Stack final do MVP
-
-- **Decisão:** usar HTML5, CSS3 e JavaScript ES6+ no front-end, Node.js com Express no back-end, Multer para upload de currículo PDF e arquivos JSON locais para usuários, oportunidades e candidaturas.
-- **Alternativas consideradas:** Java com Spring Boot no back-end; React ou Vue no front-end; bancos SQL/NoSQL externos.
-- **Motivo:** esta combinação permite integração simples, baixa complexidade de ambiente e execução local no VS Code. HTML/CSS/JS facilita o desenvolvimento colaborativo no prazo de uma semana, enquanto Express fornece uma API REST direta e JSON garante demonstração offline estável.
+## 24/11/2026 — Stack planejada do MVP
+- **Decisão:** planejar o MVP com frontend React/Vite e backend Java/Spring Boot, sujeito à implementação realmente versionada.
+- **Alternativas consideradas:** HTML/CSS/JavaScript puro com Node.js e Express; bancos SQL/NoSQL externos.
+- **Motivo:** a base confirmada no repositório usa React 19 com Vite no frontend e Java 17 com Spring Boot no backend. Este registro descreve o plano documentado e não afirma que API ou recursos estavam concluídos antes de haver evidência no código.
 
 ## 24/11/2026 — Identidade visual e navegação por papel
 
@@ -120,3 +107,13 @@ Copiem o modelo abaixo sempre que precisarem de uma entrada nova.
 - **Decisão:** manter comandos de inicialização independentes para frontend e backend, permitindo executar e testar cada aplicação separadamente durante o desenvolvimento.
 - **Alternativas consideradas:** executar as duas aplicações por meio de um único processo; depender da inicialização manual de ferramentas externas para cada alteração.
 - **Motivo:** a execução independente facilita a identificação de erros, os testes e o desenvolvimento paralelo das equipes.
+
+## 25/11/2026 — Inicialização do frontend e do backend
+- **Decisão:** inicializar o frontend em `Front-end/` com React e Vite e o backend em `Back-end/` com Java 17 e Spring Boot.
+- **Alternativas consideradas:** implementar frontend e backend em um único projeto Node.js; manter o projeto apenas em estrutura documental; iniciar o backend já conectado a banco de dados.
+- **Motivo:** a configuração versionada fornece áreas separadas de desenvolvimento e configurações iniciais de build. O frontend contém a aplicação inicial do Vite e o backend contém a classe principal Spring e dependências básicas; nenhum dos dois deve ser descrito como implementação completa do NextHub neste estágio.
+
+## 25/11/2026 — Estado de verificação da implementação no repositório
+- **Decisão:** não marcar recursos solicitados ou relatados apenas em conversa como implementados até que exista código-fonte ou commit verificável no repositório.
+- **Alternativas consideradas:** apresentar atualizações em ZIP ou relatórios de conversa como concluídos; documentar todos os comportamentos solicitados como entregues.
+- **Motivo:** as evidências atuais confirmadas são a estrutura dos projetos, a aplicação inicial React e a aplicação inicial Spring. Fluxos de oportunidades, candidatos, candidaturas, favoritos e PDF devem ser confirmados no código antes de serem registrados como concluídos.

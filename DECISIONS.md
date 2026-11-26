@@ -19,33 +19,21 @@ Copy the template below whenever you need a new entry.
 - **Rationale:**
 ```
 
-## 23/11/2026 — Back-end stack choice (example)
-
-- **Decision:** use Node.js with Express on the back-end.
-- **Alternatives considered:** Java with Spring Boot; Python with FastAPI.
-- **Rationale:** the team is already more familiar with JavaScript, and a one-week deadline favors a stack everyone can contribute to from day one.
-
 ## 23/11/2026 — Market references for the opportunity wall experience
 
 - **Decision:** use **InfoJobs** and **Indeed** as visual and interaction references for organizing and presenting opportunities in the wall.
 - **Alternatives considered:** creating a fully original experience; reproducing the layout of a single platform; combining patterns from multiple job portals.
 - **Rationale:** both platforms offer clear, familiar patterns such as straightforward search, useful filters and concise cards with essential information. The project can learn from these patterns without copying the products, preserving a simple navigation flow and a distinct identity aligned with the mural's purpose.
 
-## 23/11/2026 — Java back-end and Node.js, HTML and CSS front-end
-
-- **Decision:** use Java for the back-end and Node.js with HTML and CSS for the front-end.
-- **Alternatives considered:** Node.js with Express across the project; Java with Spring Boot across the project; Python with FastAPI for the back-end.
-- **Rationale:** this combination allows the team to explore two back-end approaches with different characteristics: Java provides a mature, structured foundation, while Node.js supports the presentation layer and integration with HTML and CSS. The decision will be validated during MVP implementation and may be adjusted if technical or integration limitations arise.
-
 ## 24/11/2026 — Official NextHub MVP scope
 - **Decision:** deliver a responsive, end-to-end and demonstrable MVP within one week. Students must be able to complete a profile and upload a PDF résumé, receive recommendations, save opportunities and submit applications. Companies must be able to publish opportunities and view enrolled candidates.
 - **Alternatives considered:** reducing the MVP to a static wall; adding a complete company selection process; creating a vacancy marketplace with external search and institutional integrations.
 - **Rationale:** a complete flow is more valuable to the presentation than a long list of partially implemented features. The scope covers search, recommendations, basic applications and publishing without requiring external services or complex infrastructure.
 
-## 24/11/2026 — Final MVP stack
-- **Decision:** use HTML5, CSS3 and JavaScript ES6+ on the frontend, Node.js with Express on the backend, Multer for PDF résumé uploads and local JSON files for users, opportunities and applications.
-- **Alternatives considered:** Java with Spring Boot on the backend; React or Vue on the frontend; external SQL/NoSQL databases.
-- **Rationale:** this combination has low environment complexity and runs locally in VS Code. HTML/CSS/JavaScript is practical for collaborative development within one week, Express provides a straightforward REST API and JSON keeps the demo stable and offline.
+## 24/11/2026 — Planned MVP stack
+- **Decision:** plan the MVP with a React/Vite frontend and a Java/Spring Boot backend, subject to the implementation that is actually committed.
+- **Alternatives considered:** plain HTML/CSS/JavaScript with Node.js and Express; external SQL/NoSQL databases.
+- **Rationale:** the repository's committed foundation uses React 19 with Vite for the frontend and Java 17 with Spring Boot for the backend. This record describes the documented plan and must not imply that API or feature implementation was completed before source evidence existed.
 
 ## 24/11/2026 — Visual identity and role-based navigation
 - **Decision:** adopt the NextHub name, a light interface with an accessible dark theme, dark blue as the main color and category badges: orange for Internship, pink for Event, green for Freelancer and purple for Course. Desktop uses a fixed Sidebar and mobile uses a Bottom Navigation Bar.
@@ -111,3 +99,13 @@ Copy the template below whenever you need a new entry.
 - **Decision:** Maintain independent startup commands for the frontend and backend, allowing each application to be run and tested separately during development.
 - **Alternatives considered:** Running both applications through a single process; relying on the manual startup of external tools for every change.
 - **Reasoning:** Independent execution facilitates error identification, testing, and parallel development by different teams.
+
+## 25/11/2026 — Frontend and backend project scaffolding
+- **Decision:** initialize the frontend in `Front-end/` with React and Vite, and the backend in `Back-end/` with Java 17 and Spring Boot.
+- **Alternatives considered:** implementing frontend and backend in a single Node.js project; keeping the project in documentation-only structure; using a database-backed backend initially.
+- **Rationale:** the committed setup provides separate development areas and working build configuration. The frontend currently contains the Vite starter application, and the backend contains the Spring application entry point and base dependencies; neither should be described as a complete NextHub implementation yet.
+
+## 25/11/2026 — Repository implementation verification status
+- **Decision:** do not mark requested or conversation-only features as implemented until their source code or verifiable commit exists in the repository.
+- **Alternatives considered:** presenting ZIP updates or conversation reports as completed; documenting every requested behavior as shipped.
+- **Rationale:** current verified evidence includes project scaffolding and an initial React starter and Spring application. Opportunity, candidate, application, favorites and PDF flows must be confirmed in source before being added as completed features.
