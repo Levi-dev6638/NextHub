@@ -25,6 +25,8 @@ public class User {
     private String interests;
     private String format;
     private String availability;
+    @Column(length = 20000)
+    private String courses;
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
@@ -50,4 +52,6 @@ public class User {
     public void setFormat(String format) { this.format = format; }
     public String getAvailability() { return availability; }
     public void setAvailability(String availability) { this.availability = availability; }
+    public String getCourses() { return courses; }
+    public void setCourses(String courses) { this.courses = courses; }
 }
