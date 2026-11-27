@@ -2,6 +2,8 @@ node_modules/
 **/node_modules/
 frontend/dist/
 Back-end/target/
+frontend/playwright-report/
+frontend/test-results/
 backend/uploads/*
 !backend/uploads/.gitkeep
 back-end/uploads/*

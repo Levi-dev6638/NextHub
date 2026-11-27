@@ -63,3 +63,10 @@ Este registro descreve as decisões que definem o MVP atual do NextHub. As entra
 - **Decisão:** substituir a API Node/Express pela API Java/Spring Boot oficial, usar Spring Data JPA/Hibernate para persistência e SQLite como banco local persistente.
 - **Alternativas consideradas:** manter o Node como API concorrente ou manter os dados apenas em arquivos JSON.
 - **Motivo:** atender à arquitetura definida para o projeto, centralizar a persistência em SQLite e usar uma única API REST responsável pelos fluxos do NextHub. Esta decisão substitui as decisões de 25 de novembro sobre back-end e persistência.
+
+## 26 de novembro de 2026 — Ajustes visuais e acesso aos currículos
+
+- **Decisão:** registrar os ajustes de estilo visual feitos pelo usuário e definir que a área de candidatos da empresa deve oferecer botões “Ver currículo” para abrir os currículos dos candidatos.
+- **Alternativas consideradas:** deixar o currículo acessível somente por outra tela ou não oferecer acesso direto na lista de candidatos.
+- **Motivo:** facilitar a consulta do currículo durante a análise de candidatos.
+- **Status:** esta entrada registra uma decisão de interface, não confirma que a funcionalidade esteja disponível no código atual; as alterações relacionadas foram revertidas pelo usuário.

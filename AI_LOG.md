@@ -72,3 +72,18 @@ Never commit API keys, passwords or other secrets. Those values go in a `.env` f
 - **What the team kept:** the active React/Vite interface and the fictional demo accounts and opportunities, with SQLite as runtime persistence. The seed JSON is read only when the database has no users.
 - **What the team corrected or rejected, and why:** the prior Node/Express architecture decision was explicitly superseded; it is retained only as historical context. The untracked user's local account-data file is not part of this migration and must not be committed. No push or remote workflow run is claimed.
 - **Verification:** the Java backend test passed (1 test, 0 failures), as did frontend lint and production build. Local login and opportunity retrieval were smoke-tested against the running API. The GitHub Actions workflow has not been run remotely.
+
+### 26/11/2026 — Visual adjustments and “View résumé” buttons
+
+- **Main prompt:** The user asked to document the style adjustments they made and requested buttons for viewing candidate résumés.
+- **What the AI generated or changed:** during implementation, the candidate area temporarily gained “View résumé” buttons and a PDF viewer. The user later reverted those code changes.
+- **What the team kept:** the request and UI decision are recorded to guide a future implementation.
+- **What was corrected or rejected, and why:** this entry does not claim that the buttons or viewer are available in the current code, because the related changes were undone.
+
+### 26/11/2026 — Frontend and backend happy-path tests
+
+- **Main prompt:** The user asked for automated frontend and backend tests that cover the happy paths.
+- **What the AI generated or changed:** added Playwright browser flows for student registration and re-login, résumé upload and application, and company opportunity publishing; added MockMvc API flows for student registration, profile update, résumé upload and application, plus company login, publishing and read-back. The tests use isolated SQLite files, can run locally, and are included in CI. The CORS origin is configurable so test servers can use isolated ports.
+- **What the team kept:** the tests exercise the real React/Vite frontend and Spring Boot API against SQLite. The user’s existing local JSON changes were left untouched.
+- **What was corrected or rejected, and why:** no remote CI execution is claimed. The profile page currently sends a `courses` field that the API rejects; this was found while examining the UI flow and was not changed as part of this test-focused request.
+- **Verification:** all 3 Playwright flows and all 3 Java tests passed; frontend lint and production build passed. The remote GitHub Actions workflow was not run.
