@@ -100,6 +100,10 @@ As contas de demonstração usam a senha `demo1234`:
 - Estudante: `ana@nexthub.demo`
 - Empresa: `talentos@nexthub.demo`
 
+## Front-end
+
+O front-end usa React com JSX, Vite e React Router. As páginas ficam em `frontend/src/pages/`, os componentes compartilhados em `frontend/src/components/`, e a comunicação com a API em `frontend/src/services/api.js`. A navegação do React Router usa a URL após `#` (por exemplo, `http://localhost:5173/#/mural`). O CSS existente em `frontend/public/css/style.css` mantém a identidade visual e os layouts responsivos.
+
 ## Endpoints da API
 
 A API Java mantém os contratos usados pelo frontend:
@@ -116,6 +120,7 @@ A API Java mantém os contratos usados pelo frontend:
 ```sh
 npm run lint:frontend
 npm run build:frontend
+npm --prefix frontend run test:e2e
 ```
 
 Execute os testes Java em um terminal separado. No PowerShell:
