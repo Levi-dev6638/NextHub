@@ -761,8 +761,14 @@ textarea:focus {
         grid-template-columns: 1fr
     }
 
-    .filters select {
-        flex: 1;
+    .filters {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr)
+    }
+
+    .filters select,
+    .filters .btn {
+        width: 100%;
         min-width: 0
     }
 

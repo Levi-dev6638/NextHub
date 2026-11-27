@@ -11,6 +11,13 @@ test('estudante entra, envia currículo e se candidata a uma oportunidade', asyn
   expect(loginResponse.status(), await loginResponse.text()).toBe(200);
 
   await expect(page.locator('.page h1')).toContainText('Olá, Ana');
+  await page.setViewportSize({ width: 360, height: 800 });
+  const filterWidths = await page.locator('.filters > *').evaluateAll(elements =>
+    elements.map(element => element.getBoundingClientRect().width));
+  expect(filterWidths).toHaveLength(4);
+  expect(Math.min(...filterWidths)).toBeGreaterThanOrEqual(280);
+  await page.setViewportSize({ width: 1280, height: 800 });
+
   await page.locator('.sidebar a[data-go="perfil"]').click();
 
   await page.locator('#resume input[name="resume"]').setInputFiles({
