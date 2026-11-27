@@ -70,3 +70,31 @@ Este registro descreve as decisões que definem o MVP atual do NextHub. As entra
 - **Alternativas consideradas:** deixar o currículo acessível somente por outra tela ou não oferecer acesso direto na lista de candidatos.
 - **Motivo:** facilitar a consulta do currículo durante a análise de candidatos.
 - **Status:** esta entrada registra uma decisão de interface, não confirma que a funcionalidade esteja disponível no código atual; as alterações relacionadas foram revertidas pelo usuário.
+
+## 27 de novembro de 2026 — Perfil, notificações e candidaturas
+
+- **Decisão:** persistir os cursos do estudante junto ao perfil no SQLite e disponibilizá-los pela API de perfil.
+- **Alternativas consideradas:** descartar cursos nas atualizações do perfil ou criar uma tabela separada para cursos.
+- **Motivo:** a lista de cursos é pequena e faz parte do perfil neste MVP; a API valida os dados e os armazena como JSON junto ao usuário.
+
+- **Decisão:** derivar notificações dos registros de candidatura e salvar o estado de leitura por usuário no `localStorage` do navegador; exibir a bolinha somente quando houver notificações não lidas.
+- **Alternativas consideradas:** criar uma tabela de notificações no servidor ou manter a bolinha sempre visível.
+- **Motivo:** simplificar o MVP local. O estado de leitura é local ao navegador e não é sincronizado entre dispositivos.
+
+- **Decisão:** permitir que o estudante retire a própria candidatura por `DELETE /api/applications/{id}`, verificando a propriedade da candidatura.
+- **Alternativas consideradas:** permitir que empresas excluam candidaturas ou tornar os envios imutáveis.
+- **Motivo:** o estudante mantém controle sobre as próprias inscrições, com autorização aplicada pela API.
+
+- **Decisão:** manter a barra de navegação mobile fixa durante a rolagem e incluir espaçamento para a área segura do dispositivo.
+- **Alternativas consideradas:** deixar a barra rolar junto com o conteúdo ou ignorar as áreas seguras do celular.
+- **Motivo:** manter a navegação acessível sem que a interface do sistema a cubra.
+
+## 27 de novembro de 2026 — Ações de oportunidades e movimento
+
+- **Decisão:** na lista de oportunidades da empresa, manter somente a ação “Ver”; colocar “Editar” e “Encerrar oportunidade” nos detalhes.
+- **Alternativas consideradas:** manter todas as ações na linha da lista ou distribuir os botões entre a lista e os detalhes.
+- **Motivo:** simplificar a lista e evitar que as ações fiquem apertadas ou quebrem em telas pequenas.
+
+- **Decisão:** usar animações discretas para feedback e transições da interface, respeitando a preferência de movimento reduzido do sistema.
+- **Alternativas consideradas:** não animar a interface ou aplicar movimentos contínuos e intensos.
+- **Motivo:** dar retorno visual sem distrair ou desconsiderar as preferências de acessibilidade.

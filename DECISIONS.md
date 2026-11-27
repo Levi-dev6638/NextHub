@@ -70,3 +70,31 @@ This log records the decisions that define the current NextHub MVP. Entries are 
 - **Alternatives considered:** making résumés accessible only from another screen or omitting direct access from the candidate list.
 - **Rationale:** make it easier to review a résumé while evaluating candidates.
 - **Status:** this entry records a UI decision; it does not confirm that the feature is present in the current code, as the related changes were reverted by the user.
+
+## 27 November 2026 — Profile, notification, and application behavior
+
+- **Decision:** persist student course entries with the profile in SQLite and expose them through the profile API.
+- **Alternatives considered:** dropping course data from profile updates or introducing a separate course table.
+- **Rationale:** course entries are a small part of the student's profile in this MVP; the API validates and stores the list as JSON with the user record.
+
+- **Decision:** derive notifications from application records and save read state per user in the browser's `localStorage`; show the unread dot only when unread notifications exist.
+- **Alternatives considered:** adding a separate server-side notification table or showing the dot permanently.
+- **Rationale:** this keeps the local MVP simple. Read state is browser-local and is not synchronized across devices.
+
+- **Decision:** let a student withdraw an application through `DELETE /api/applications/{id}`, restricted to that application's owner.
+- **Alternatives considered:** allowing companies to delete student applications or leaving applications immutable.
+- **Rationale:** students control their own submissions while application ownership remains enforced by the API.
+
+- **Decision:** keep the mobile navigation bar fixed while scrolling and include device safe-area padding.
+- **Alternatives considered:** allowing the bar to scroll with page content or ignoring mobile safe areas.
+- **Rationale:** keep navigation accessible on phones without obscuring it behind system UI.
+
+## 27 November 2026 — Opportunity actions and motion
+
+- **Decision:** keep only the “View” action in the company's opportunity list; place “Edit” and “Close opportunity” in the details.
+- **Alternatives considered:** keeping every action in the list row or splitting the buttons between the list and details.
+- **Rationale:** simplify the list and prevent actions from wrapping or becoming cramped on small screens.
+
+- **Decision:** use restrained animations for interface feedback and transitions while honoring the system's reduced-motion preference.
+- **Alternatives considered:** no interface animation or continuous, pronounced motion.
+- **Rationale:** provide visual feedback without distraction or disregard for accessibility preferences.

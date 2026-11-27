@@ -93,3 +93,20 @@ Nunca commitem chaves de API, senhas ou outros segredos. Esses valores vão em `
 - **O que o time aproveitou:** os testes exercitam o frontend React/Vite e a API Spring Boot reais usando SQLite. As alterações locais existentes no JSON do usuário foram preservadas.
 - **O que foi corrigido ou rejeitado, e por quê:** não se afirma que a CI remota foi executada. A tela de perfil atualmente envia o campo `courses`, que a API rejeita; isso foi identificado ao examinar o fluxo da interface e não foi alterado nesta solicitação focada em testes.
 - **Verificação:** os 3 fluxos Playwright e os 3 testes Java passaram; lint e build de produção do frontend passaram. O workflow remoto do GitHub Actions não foi executado.
+
+### 27/11/2026 — Correções de perfil, notificações, candidaturas e mobile
+
+- **Prompt principal:** O usuário pediu para executar a aplicação local, diagnosticar erros ao salvar o perfil, fazer notificações desaparecerem após a leitura, corrigir a retirada de candidatura e ajustar problemas de interface mobile.
+- **IA/ferramentas utilizadas:** GitHub Copilot no VS Code, PowerShell, Java 25, Maven Wrapper, npm e Playwright.
+- **O que a IA gerou ou alterou:** adicionou validação e persistência dos cursos do perfil no SQLite; criou o endpoint `DELETE /api/applications/{id}` com verificação de propriedade; passou a registrar notificações lidas por usuário no `localStorage` e mostrar a bolinha somente quando houver itens não lidos; permitiu a quebra de nomes longos de currículo no perfil; e ajustou a barra mobile fixa para rolagem e áreas seguras do dispositivo.
+- **O que o time aproveitou:** as correções de perfil, candidatura, notificações e navegação mobile. O JDK 25 local e os servidores frontend/API foram usados somente na verificação e não são entregáveis do repositório.
+- **O que foi corrigido ou rejeitado, e por quê:** mudanças exploratórias no visualizador de currículo e no layout dos cards de candidatos foram revertidas a pedido do usuário e não fazem parte das alterações finais. O espaçamento dos cards foi restaurado em vez de manter o recuo à direita proposto.
+- **Verificação:** os 3 testes Java do back-end passaram; os 7 testes Playwright passaram; o build de produção do frontend passou. Não houve execução remota do GitHub Actions nem alterações no GitHub. O estado de leitura das notificações é local a cada navegador e não é sincronizado entre dispositivos.
+
+### 27/11/2026 — Ações de oportunidades e animações de interface
+
+- **Prompt principal:** O usuário pediu para organizar as ações de oportunidades, ajustar o botão de fechar e adicionar animações ao projeto.
+- **O que a IA gerou ou alterou:** deixou apenas “Ver” na lista da empresa e moveu “Editar” e “Encerrar oportunidade” para os detalhes; removeu o fundo e a borda do X de fechar, mantendo o hover na cor primária; adicionou animações sutis para cards, páginas, navegação, botões, modais e mensagens de feedback, incluindo saída dos modais e mensagens.
+- **O que o time aproveitou:** o novo fluxo de ações, os efeitos visuais discretos e o respeito à preferência de movimento reduzido do sistema.
+- **O que foi corrigido ou rejeitado, e por quê:** a proposta inicial de deixar o botão de fechar vermelho e em formato de quadrado foi ajustada conforme as instruções do usuário: apenas o X, com hover na cor primária e movimento de elevação/aumento.
+- **Verificação:** lint, build de produção do frontend e `git diff --check` passaram. Os testes de navegador não foram executados nesta etapa; o servidor de teste do back-end requer Java 25, enquanto o ambiente disponível estava com Java 21.

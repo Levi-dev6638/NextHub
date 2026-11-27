@@ -11,12 +11,13 @@ Estudantes encontram oportunidades espalhadas por redes sociais, grupos de conve
 ## Funcionalidades do MVP
 
 - Cadastro, login e logout de estudantes e empresas.
-- Perfil do estudante com interesses, formação, formato desejado e disponibilidade.
+- Perfil do estudante com cursos, interesses, formação, formato desejado e disponibilidade.
 - Upload de currículo PDF (máximo de 5 MB) e acesso controlado pelo candidato e pela empresa correspondente.
 - Listagem, busca textual e filtros por tipo, formato, assunto e área.
 - Detalhes de oportunidades, recomendações explicáveis, favoritos e candidaturas internas ou externas.
-- Criação, edição e encerramento de oportunidades pela empresa; análise de candidatos e atualização do status das candidaturas.
-- Interface responsiva, tema claro/escuro e navegação por perfil.
+- Criação, edição e encerramento de oportunidades pela empresa; análise de candidatos e atualização do status das candidaturas. Estudantes podem retirar as próprias candidaturas.
+- Notificações derivadas das candidaturas são marcadas como lidas ao serem abertas; a bolinha aparece somente enquanto houver itens não lidos neste navegador.
+- Interface responsiva, tema claro/escuro, navegação por perfil e barra mobile fixa que respeita a área segura do dispositivo.
 - Dados locais fictícios para demonstração: 20 oportunidades, 10 usuários e 14 candidaturas.
 
 O fluxo de candidatura interna exige currículo. Anúncios externos direcionam para o endereço de inscrição publicado. As recomendações são correspondências determinísticas com interesses, formação e formato desejado; a aplicação não chama serviços externos de IA.
@@ -107,7 +108,7 @@ A API Java mantém os contratos usados pelo frontend:
 - Perfil: `PATCH /api/profile`.
 - Oportunidades: `GET` e `POST /api/opportunities`; `PATCH` e `DELETE /api/opportunities/{id}`; `GET /api/company/opportunities`.
 - Favoritos: `GET /api/favorites` e `POST /api/favorites/{id}`.
-- Candidaturas: `GET /api/applications`, `POST /api/applications/{id}` e `PATCH /api/applications/{id}`.
+- Candidaturas: `GET /api/applications`, `POST /api/applications/{id}`, `PATCH /api/applications/{id}` e `DELETE /api/applications/{id}` para o estudante dono retirar a própria candidatura.
 - Currículos: `POST /api/resume` e `GET /api/resume/{id}`.
 
 ## Testes e lint
@@ -131,7 +132,7 @@ cd Back-end
 bash ./mvnw test
 ```
 
-Os testes de integração do back-end cobrem cadastro e perfil de estudante, upload de currículo, candidatura e publicação de oportunidade pela empresa. Os fluxos do front-end cobrem cadastro e novo login, candidatura de estudante e publicação da empresa. Para executar os testes no navegador, instale o Chromium uma vez e rode:
+Os testes de integração do back-end cobrem cadastro, atualização de perfil incluindo persistência dos cursos, upload de currículo, envio e retirada de candidatura e publicação de oportunidade pela empresa. Os sete testes de navegador cobrem cadastro e login, candidatura, publicação pela empresa, leitura de notificações, nomes longos de currículo e navegação mobile durante a rolagem. Para executar os testes no navegador, instale o Chromium uma vez e rode:
 
 ```sh
 cd frontend

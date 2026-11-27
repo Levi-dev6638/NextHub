@@ -11,12 +11,13 @@ Students often find opportunities scattered across social networks, group chats,
 ## MVP features
 
 - Student and company registration, login, and logout.
-- Student profile with interests, education, preferred format, and availability.
+- Student profile with courses, interests, education, preferred format, and availability.
 - PDF résumé upload (maximum 5 MB) and access control for applicants and the relevant company.
 - Opportunity listing, text search, and type, format, subject, and area filters.
 - Opportunity details, explainable recommendations, favorites, and internal or external applications.
-- Company opportunity creation, editing, closing, applicant review, and application status updates.
-- Responsive interface, light/dark theme, and role-specific navigation.
+- Company opportunity creation, editing, closing, applicant review, and application status updates; students can withdraw their applications.
+- Application-based notifications are marked read when opened; the unread indicator appears only while unread items remain in the current browser.
+- Responsive interface, light/dark theme, role-specific navigation, and a fixed mobile navigation bar that accounts for device safe areas.
 - Fictional local demonstration data: 20 opportunities, 10 users, and 14 applications.
 
 The internal application flow requires a student résumé. External listings link to their published application URL. Recommendations are deterministic matches against profile interests, education, and preferred format; no external AI service is called by the application.
@@ -107,7 +108,7 @@ The Java API preserves the contracts used by the frontend:
 - Profile: `PATCH /api/profile`.
 - Opportunities: `GET` and `POST /api/opportunities`; `PATCH` and `DELETE /api/opportunities/{id}`; `GET /api/company/opportunities`.
 - Favorites: `GET /api/favorites` and `POST /api/favorites/{id}`.
-- Applications: `GET /api/applications`, `POST /api/applications/{id}`, and `PATCH /api/applications/{id}`.
+- Applications: `GET /api/applications`, `POST /api/applications/{id}`, `PATCH /api/applications/{id}`, and `DELETE /api/applications/{id}` for the owning student to withdraw an application.
 - Résumés: `POST /api/resume` and `GET /api/resume/{id}`.
 
 ## Tests and lint
@@ -131,7 +132,7 @@ cd Back-end
 bash ./mvnw test
 ```
 
-The backend integration tests cover student registration and profile updates, résumé upload, applications, and company opportunity publishing. The frontend flows cover registration and login, a student application, and company publishing. To run the browser tests, install Chromium once and run:
+The backend integration tests cover student registration, profile updates including course persistence, résumé upload, application submission and withdrawal, and company opportunity publishing. The seven frontend browser tests cover registration and login, student applications, company publishing, notification read state, long résumé-name layout, and mobile navigation while scrolling. To run the browser tests, install Chromium once and run:
 
 ```sh
 cd frontend

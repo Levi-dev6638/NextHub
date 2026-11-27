@@ -87,3 +87,20 @@ Never commit API keys, passwords or other secrets. Those values go in a `.env` f
 - **What the team kept:** the tests exercise the real React/Vite frontend and Spring Boot API against SQLite. The user’s existing local JSON changes were left untouched.
 - **What was corrected or rejected, and why:** no remote CI execution is claimed. The profile page currently sends a `courses` field that the API rejects; this was found while examining the UI flow and was not changed as part of this test-focused request.
 - **Verification:** all 3 Playwright flows and all 3 Java tests passed; frontend lint and production build passed. The remote GitHub Actions workflow was not run.
+
+### 27/11/2026 — Profile, notifications, application withdrawal, and mobile fixes
+
+- **Main prompt:** The user asked to run the local application, diagnose profile-save errors, make viewed notifications disappear, fix application withdrawal, and address mobile layout and navigation issues.
+- **AI/tools used:** GitHub Copilot in VS Code, PowerShell, Java 25, Maven Wrapper, npm, and Playwright.
+- **What the AI generated or changed:** added profile-course validation and SQLite persistence; added an owner-checked `DELETE /api/applications/{id}` endpoint; tracked notification read state per user in browser `localStorage` and made the unread dot conditional; allowed long résumé filenames to wrap in the profile panel; and adjusted the fixed mobile navigation bar for scrolling and device safe areas.
+- **What the team kept:** the profile, application, notification, and mobile navigation fixes. The local JDK 25 and frontend/API servers were used for verification only and are not repository deliverables.
+- **What was corrected or rejected, and why:** exploratory changes to the résumé viewer and candidate-card layout were reverted at the user's request; they are not part of the final code changes. The card spacing was restored rather than retaining the proposed right inset.
+- **Verification:** all 3 Java backend tests passed; all 7 Playwright browser tests passed; the frontend production build passed. No remote GitHub Actions run or GitHub changes were made. Notification read state is local to each browser and is not synchronized across devices.
+
+### 27/11/2026 — Opportunity actions and interface animations
+
+- **Main prompt:** The user asked to reorganize opportunity actions, adjust the close button, and add animations to the project.
+- **What the AI generated or changed:** left only “View” in the company opportunity list and moved “Edit” and “Close opportunity” into the details; removed the close X's background and border while keeping its hover in the primary color; added subtle animations for cards, pages, navigation, buttons, modals, and feedback messages, including modal and message exits.
+- **What the team kept:** the updated action flow, restrained visual effects, and support for the system's reduced-motion preference.
+- **What was corrected or rejected, and why:** the initial red, square close-button proposal was adjusted to the user's direction: only the X, with a primary-color hover and lift/scale motion.
+- **Verification:** frontend lint, production build, and `git diff --check` passed. Browser tests were not run for this change; the backend test server requires Java 25, while the available environment had Java 21.
