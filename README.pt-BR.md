@@ -92,7 +92,7 @@ npm run dev:frontend
 
 Acesse <http://localhost:5173>. O Vite encaminha requisições `/api` para `http://localhost:8080`.
 
-O back-end cria ou atualiza o arquivo `Back-end/data/nexthub.sqlite` com Hibernate (`ddl-auto=update`) sem apagar dados existentes.
+O back-end cria ou atualiza o arquivo `Back-end/data/nexthub.sqlite` com Hibernate (`ddl-auto=update`) sem apagar dados existentes. A origem permitida pelo CORS pode ser configurada com `NEXTHUB_CORS_ALLOWED_ORIGIN` (padrão: `http://localhost:5173`).
 
 As contas de demonstração usam a senha `demo1234`:
 
@@ -131,9 +131,20 @@ cd Back-end
 bash ./mvnw test
 ```
 
+Os testes de integração do back-end cobrem cadastro e perfil de estudante, upload de currículo, candidatura e publicação de oportunidade pela empresa. Os fluxos do front-end cobrem cadastro e novo login, candidatura de estudante e publicação da empresa. Para executar os testes no navegador, instale o Chromium uma vez e rode:
+
+```sh
+cd frontend
+npm ci
+npx playwright install chromium
+npm run test:e2e
+```
+
+O Playwright inicia a API e o Vite automaticamente e usa um SQLite temporário separado do banco local.
+
 ## CI
 
-O GitHub Actions é executado em pull requests direcionados à `main` e em pushes na `main`. O workflow instala as dependências Node, executa lint e build do front-end e testes Maven do back-end. A configuração está em `.github/workflows/ci.yml`. A última execução verificada para `dev`, no commit `7be0a89`, terminou com sucesso ([execução 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
+O GitHub Actions é executado em pull requests direcionados à `main` e em pushes na `main`. O workflow instala as dependências Node, executa lint e build do front-end, testes Maven do back-end e fluxos E2E do front-end com Playwright. A configuração está em `.github/workflows/ci.yml`. A última execução verificada para `dev`, no commit `7be0a89`, terminou com sucesso ([execução 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
 
 ## Persistência, segurança e deploy
 

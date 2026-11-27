@@ -85,3 +85,11 @@ Nunca commitem chaves de API, senhas ou outros segredos. Esses valores vão em `
 - **O que a IA gerou ou alterou:** durante a implementação, a área de candidatos recebeu botões “Ver currículo” e uma visualização do PDF. Essas alterações de código foram posteriormente revertidas pelo usuário.
 - **O que o time aproveitou:** o pedido e a decisão de interface ficam registrados para orientar uma implementação futura.
 - **O que foi corrigido ou rejeitado, e por quê:** este registro não afirma que os botões ou a visualização estejam disponíveis no código atual, pois as alterações correspondentes foram desfeitas.
+
+### 26/11/2026 — Testes de caminho feliz do frontend e do backend
+
+- **Prompt principal:** O usuário pediu testes automatizados para o frontend e o backend que cubram os caminhos felizes.
+- **O que a IA gerou ou alterou:** adicionou fluxos de navegador Playwright para cadastro e novo login de estudante, envio de currículo e candidatura, e publicação de oportunidade pela empresa; adicionou fluxos de API MockMvc para cadastro, atualização de perfil, envio de currículo e candidatura de estudante, além de login, publicação e consulta da oportunidade pela empresa. Os testes usam arquivos SQLite isolados, podem ser executados localmente e foram incluídos na CI. A origem CORS passou a ser configurável para permitir portas isoladas de teste.
+- **O que o time aproveitou:** os testes exercitam o frontend React/Vite e a API Spring Boot reais usando SQLite. As alterações locais existentes no JSON do usuário foram preservadas.
+- **O que foi corrigido ou rejeitado, e por quê:** não se afirma que a CI remota foi executada. A tela de perfil atualmente envia o campo `courses`, que a API rejeita; isso foi identificado ao examinar o fluxo da interface e não foi alterado nesta solicitação focada em testes.
+- **Verificação:** os 3 fluxos Playwright e os 3 testes Java passaram; lint e build de produção do frontend passaram. O workflow remoto do GitHub Actions não foi executado.

@@ -92,7 +92,7 @@ npm run dev:frontend
 
 Open <http://localhost:5173>. Vite proxies `/api` requests to `http://localhost:8080`.
 
-The backend creates or updates `Back-end/data/nexthub.sqlite` with Hibernate (`ddl-auto=update`) without deleting existing data.
+The backend creates or updates `Back-end/data/nexthub.sqlite` with Hibernate (`ddl-auto=update`) without deleting existing data. The allowed CORS origin can be configured with `NEXTHUB_CORS_ALLOWED_ORIGIN` (default: `http://localhost:5173`).
 
 Demo accounts use the password `demo1234`:
 
@@ -131,9 +131,20 @@ cd Back-end
 bash ./mvnw test
 ```
 
+The backend integration tests cover student registration and profile updates, résumé upload, applications, and company opportunity publishing. The frontend flows cover registration and login, a student application, and company publishing. To run the browser tests, install Chromium once and run:
+
+```sh
+cd frontend
+npm ci
+npx playwright install chromium
+npm run test:e2e
+```
+
+Playwright starts the API and Vite automatically and uses a temporary SQLite database separate from the local database.
+
 ## CI
 
-GitHub Actions runs on pull requests targeting `main` and on pushes to `main`. The workflow installs both dependency sets, lints the frontend, runs backend integration tests, and builds the frontend. The workflow is configured in `.github/workflows/ci.yml`. The latest checked run for `dev`, on commit `7be0a89`, completed successfully ([run 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
+GitHub Actions runs on pull requests targeting `main` and on pushes to `main`. The workflow installs both dependency sets, lints and builds the frontend, runs backend integration tests, and exercises frontend happy paths with Playwright. The workflow is configured in `.github/workflows/ci.yml`. The latest checked run for `dev`, on commit `7be0a89`, completed successfully ([run 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
 
 ## Persistence, security, and deployment
 
