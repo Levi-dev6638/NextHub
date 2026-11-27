@@ -133,7 +133,7 @@ bash ./mvnw test
 
 ## CI
 
-GitHub Actions runs on pull requests targeting `main` and on pushes to `main`. The workflow installs both dependency sets, lints the frontend, runs backend integration tests, and builds the frontend. The workflow is configured in `.github/workflows/ci.yml`; its latest remote run has not been checked as part of this local work.
+GitHub Actions runs on pull requests targeting `main` and on pushes to `main`. The workflow installs both dependency sets, lints the frontend, runs backend integration tests, and builds the frontend. The workflow is configured in `.github/workflows/ci.yml`. The latest checked run for `dev`, on commit `7be0a89`, completed successfully ([run 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
 
 ## Persistence, security, and deployment
 

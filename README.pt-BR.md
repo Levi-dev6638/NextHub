@@ -133,7 +133,7 @@ bash ./mvnw test
 
 ## CI
 
-O GitHub Actions é executado em pull requests direcionados à `main` e em pushes na `main`. O workflow instala as dependências Node, executa lint e build do front-end e testes Maven do back-end. A configuração está em `.github/workflows/ci.yml`; a execução remota ainda não foi verificada.
+O GitHub Actions é executado em pull requests direcionados à `main` e em pushes na `main`. O workflow instala as dependências Node, executa lint e build do front-end e testes Maven do back-end. A configuração está em `.github/workflows/ci.yml`. A última execução verificada para `dev`, no commit `7be0a89`, terminou com sucesso ([execução 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
 
 ## Persistência, segurança e deploy
 
