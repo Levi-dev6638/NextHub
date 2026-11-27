@@ -72,3 +72,10 @@ Never commit API keys, passwords or other secrets. Those values go in a `.env` f
 - **What the team kept:** the active React/Vite interface and the fictional demo accounts and opportunities, with SQLite as runtime persistence. The seed JSON is read only when the database has no users.
 - **What the team corrected or rejected, and why:** the prior Node/Express architecture decision was explicitly superseded; it is retained only as historical context. The untracked user's local account-data file is not part of this migration and must not be committed. No push or remote workflow run is claimed.
 - **Verification:** the Java backend test passed (1 test, 0 failures), as did frontend lint and production build. Local login and opportunity retrieval were smoke-tested against the running API. The GitHub Actions workflow has not been run remotely.
+
+### 26/11/2026 — Visual adjustments and “View résumé” buttons
+
+- **Main prompt:** The user asked to document the style adjustments they made and requested buttons for viewing candidate résumés.
+- **What the AI generated or changed:** during implementation, the candidate area temporarily gained “View résumé” buttons and a PDF viewer. The user later reverted those code changes.
+- **What the team kept:** the request and UI decision are recorded to guide a future implementation.
+- **What was corrected or rejected, and why:** this entry does not claim that the buttons or viewer are available in the current code, because the related changes were undone.

@@ -63,3 +63,10 @@ This log records the decisions that define the current NextHub MVP. Entries are 
 - **Decision:** replace the Node/Express API with the official Java/Spring Boot API, use Spring Data JPA/Hibernate for persistence, and SQLite as the local persistent database.
 - **Alternatives considered:** keeping Node as a competing API or retaining data only in JSON files.
 - **Rationale:** match the requested architecture, centralize persistence in SQLite, and maintain a single REST API responsible for the NextHub flows. This supersedes the 25 November backend and persistence decisions.
+
+## 26 November 2026 — Visual adjustments and résumé access
+
+- **Decision:** record the visual style adjustments made by the user and define that the company's candidate area should provide “View résumé” buttons to open candidates' résumés.
+- **Alternatives considered:** making résumés accessible only from another screen or omitting direct access from the candidate list.
+- **Rationale:** make it easier to review a résumé while evaluating candidates.
+- **Status:** this entry records a UI decision; it does not confirm that the feature is present in the current code, as the related changes were reverted by the user.

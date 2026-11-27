@@ -78,3 +78,10 @@ Nunca commitem chaves de API, senhas ou outros segredos. Esses valores vão em `
 - **O que o time aproveitou:** a interface React/Vite ativa e as contas e oportunidades fictícias de demonstração, com SQLite como persistência de execução. O seed JSON é lido somente quando o banco ainda não contém usuários.
 - **O que o time corrigiu ou rejeitou, e por quê:** a decisão arquitetural anterior por Node/Express foi explicitamente substituída e permanece apenas como histórico. O arquivo local com dados de conta do usuário não faz parte da migração e não deve ser commitado. Não se afirma que houve push ou execução remota do workflow.
 - **Verificação:** o teste do back-end Java passou (1 teste, 0 falhas), assim como lint e build de produção do frontend. Login e consulta de oportunidades foram verificados por smoke test contra a API em execução. O GitHub Actions ainda não foi executado remotamente.
+
+### 26/11/2026 — Ajustes visuais e solicitação dos botões “Ver currículo”
+
+- **Prompt principal:** O usuário pediu para registrar os ajustes de estilo que fez e a solicitação de criar botões para visualizar os currículos dos candidatos.
+- **O que a IA gerou ou alterou:** durante a implementação, a área de candidatos recebeu botões “Ver currículo” e uma visualização do PDF. Essas alterações de código foram posteriormente revertidas pelo usuário.
+- **O que o time aproveitou:** o pedido e a decisão de interface ficam registrados para orientar uma implementação futura.
+- **O que foi corrigido ou rejeitado, e por quê:** este registro não afirma que os botões ou a visualização estejam disponíveis no código atual, pois as alterações correspondentes foram desfeitas.
