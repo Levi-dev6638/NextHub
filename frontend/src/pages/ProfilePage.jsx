@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth.js';
 import { useToast } from '../hooks/useToast.js';
 import { api } from '../services/api.js';
+import { OPPORTUNITY_AREAS } from '../utils/opportunityAreas.js';
 
 function blankCourse() {
   return { name: '', institution: '', hours: '' };
@@ -11,6 +12,11 @@ export default function ProfilePage() {
   const { user, updateUser } = useAuth();
   const toast = useToast();
   const profile = user.profile || {};
+  const [interest, setInterest] = useState(() => (
+    (profile.interests || '').split(/[,;]+/)
+      .map((area) => area.trim())
+      .find((area) => OPPORTUNITY_AREAS.includes(area)) || ''
+  ));
   const [courses, setCourses] = useState(() => (
     Array.isArray(profile.courses) ? profile.courses.map((course) => ({ ...course })) : []
   ));
@@ -42,7 +48,7 @@ export default function ProfilePage() {
     const details = {
       phone: values.phone,
       institution: values.institution,
-      interests: values.interests,
+      interests: interest,
       format: values.format,
       courses: courses.map((course) => ({
         name: course.name.trim(),
@@ -95,7 +101,12 @@ export default function ProfilePage() {
             <label><span className="label">E-mail</span><input value={user.email} disabled /></label>
             <label><span className="label">Telefone</span><input name="phone" defaultValue={profile.phone || ''} /></label>
             <label><span className="label">Instituição</span><input name="institution" defaultValue={profile.institution || ''} /></label>
-            <label><span className="label">Áreas de interesse</span><input name="interests" defaultValue={profile.interests || ''} /></label>
+            <label><span className="label">Áreas de interesse</span>
+              <select name="interests" value={interest} onChange={(event) => setInterest(event.target.value)}>
+                <option value="">Selecione uma área</option>
+                {OPPORTUNITY_AREAS.map((area) => <option key={area}>{area}</option>)}
+              </select>
+            </label>
             <label><span className="label">Formato desejado</span>
               <select name="format" defaultValue={profile.format || 'Remoto'}>
                 {['Remoto', 'Híbrido', 'Presencial'].map((format) => <option key={format}>{format}</option>)}

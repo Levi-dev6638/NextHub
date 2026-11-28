@@ -20,13 +20,43 @@ test('estudante entra, envia currículo e se candidata a uma oportunidade', asyn
 
   await page.locator('.sidebar a[data-go="perfil"]').click();
 
+  await page.locator('#profile select[name="interests"]').selectOption('Design');
+  await page.locator('#profile .btn-primary').click();
+  await expect(page.locator('.toast').filter({ hasText: 'Perfil atualizado.' })).toBeVisible();
+
   await page.locator('#resume input[name="resume"]').setInputFiles({
     name: 'curriculo.pdf',
     mimeType: 'application/pdf',
     buffer: Buffer.from('%PDF-1.4\n%%EOF'),
   });
   await page.locator('#resume .btn-primary').click();
-  await expect(page.locator('.toast')).toHaveText('Currículo enviado.');
+  await expect(page.locator('.toast').filter({ hasText: 'Currículo enviado.' })).toBeVisible();
+
+  await page.locator('.sidebar a[data-go="candidaturas"]').click();
+  await page.locator('[data-tab="favorites"]').click();
+  const favorite = page.locator('.op-card').filter({
+    hasText: 'JavaScript do zero ao primeiro projeto',
+  });
+  await favorite.getByRole('button', { name: 'Candidatar-se' }).click();
+  await expect(page.locator('.toast').filter({ hasText: 'Candidatura registrada!' })).toBeVisible();
+  await expect(favorite).toContainText('Em análise');
+  await expect(favorite.getByRole('button', { name: 'Você já se candidatou' })).toBeDisabled();
+  await expect(favorite.getByRole('button', { name: 'Acessar candidatura' })).toBeVisible();
+
+  await page.locator('.sidebar nav a[data-go="mural"]').click();
+  await expect(page.locator('.grid').first().locator('.op-card').filter({
+    hasText: 'Combina com Design',
+  }).first()).toBeVisible();
+  await page.locator('input[name="q"]').fill('JavaScript do zero ao primeiro projeto');
+  await page.getByRole('button', { name: 'Buscar oportunidades' }).click();
+  const appliedOpportunity = page.locator('.op-card').filter({
+    hasText: 'JavaScript do zero ao primeiro projeto',
+  }).last();
+  await appliedOpportunity.getByRole('button', { name: 'Ver', exact: true }).click();
+  await expect(page.locator('#modal #apply')).toBeDisabled();
+  await expect(page.locator('#modal #apply')).toHaveText('Você já se candidatou');
+  await page.locator('#modal #close').click();
+  await page.getByRole('button', { name: 'Limpar filtros' }).click();
 
   await page.locator('.sidebar nav a[data-go="mural"]').click();
   const opportunity = page.locator('.op-card').filter({

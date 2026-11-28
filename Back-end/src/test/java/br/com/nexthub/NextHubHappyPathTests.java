@@ -111,6 +111,23 @@ class NextHubHappyPathTests {
         mvc.perform(get("/api/applications").session(session))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isEmpty());
+
+        MvcResult externalApplication = mvc.perform(post("/api/applications/o3").session(session))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.opportunityId").value("o3"))
+                .andExpect(jsonPath("$.status").value("Enviada"))
+                .andReturn();
+        String externalApplicationId = mapper.readTree(externalApplication.getResponse().getContentAsString())
+                .path("id").asText();
+
+        mvc.perform(post("/api/applications/o3").session(session))
+                .andExpect(status().isConflict());
+        mvc.perform(get("/api/applications").session(session))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].opportunityId").value("o3"));
+        mvc.perform(delete("/api/applications/" + externalApplicationId).session(session))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.deleted").value(true));
     }
 
     @Test

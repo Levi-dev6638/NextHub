@@ -8,13 +8,16 @@ import { useAuth } from '../hooks/useAuth.js';
 import { useToast } from '../hooks/useToast.js';
 import useOpportunityActions from '../hooks/useOpportunityActions.js';
 import { api } from '../services/api.js';
+import { OPPORTUNITY_AREAS } from '../utils/opportunityAreas.js';
 
 function getRecommendations(opportunities, user) {
   const profile = user.profile || {};
-  const terms = [
-    ...(profile.interests || '').toLocaleLowerCase('pt-BR').split(/[,;]+/),
-    ...(profile.courses || []).map((course) => (course.name || '').toLocaleLowerCase('pt-BR')),
-  ].map((term) => term.trim()).filter((term) => term.length > 2);
+  const interests = (profile.interests || '').toLocaleLowerCase('pt-BR').split(/[,;]+/)
+    .map((area) => area.trim()).filter((area) => OPPORTUNITY_AREAS.some(
+      (option) => option.toLocaleLowerCase('pt-BR') === area,
+    ));
+  const courseTerms = (profile.courses || []).map((course) => (course.name || '').toLocaleLowerCase('pt-BR'))
+    .map((term) => term.trim()).filter((term) => term.length > 2);
 
   return opportunities.map((opportunity) => {
     const text = [
@@ -23,7 +26,11 @@ function getRecommendations(opportunities, user) {
       opportunity.subject,
       opportunity.description,
     ].join(' ').toLocaleLowerCase('pt-BR');
-    const match = terms.find((term) => text.includes(term));
+    const areaMatch = interests.find((area) => (
+      area === (opportunity.area || '').toLocaleLowerCase('pt-BR')
+    ));
+    const courseMatch = courseTerms.find((term) => text.includes(term));
+    const match = areaMatch ? opportunity.area : courseMatch;
     const format = profile.format && opportunity.format
       && profile.format.toLocaleLowerCase('pt-BR') === opportunity.format.toLocaleLowerCase('pt-BR');
     return { opportunity, match, format, score: (match ? 2 : 0) + (format ? 1 : 0) };
@@ -143,7 +150,7 @@ export default function MuralPage() {
           </select>
           <select aria-label="Área" name="area" value={filters.area} onChange={updateFilter}>
             <option value="">Todas as áreas</option>
-            {['Tecnologia', 'Design', 'Marketing', 'Negócios', 'Educação'].map((value) => <option key={value}>{value}</option>)}
+            {OPPORTUNITY_AREAS.map((value) => <option key={value}>{value}</option>)}
           </select>
           <button className="btn" type="button" onClick={clearFilters}>Limpar filtros</button>
         </div>

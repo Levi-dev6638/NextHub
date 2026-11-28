@@ -36,7 +36,9 @@ export default function OpportunityCard({
           )}>
             {showApplication ? 'Acessar candidatura' : 'Ver'}
           </button>
-          {!showApplication && <button className="btn btn-primary" type="button" onClick={() => onApply(id)}>Candidatar-se</button>}
+          {showApplication
+            ? <button className="btn btn-primary" type="button" disabled>Você já se candidatou</button>
+            : <button className="btn btn-primary" type="button" onClick={() => onApply(id)}>Candidatar-se</button>}
         </div>
       </article>
     );

@@ -377,11 +377,6 @@ public class NextHubController {
         requireRole(u, "student");
         Opportunity o = opportunities.findById(id).filter(Opportunity::isActive)
                 .orElseThrow(() -> new NotFoundException());
-        if (!o.isInternalApplication()) {
-            return ResponseEntity.ok(Map.of(
-                    "externalUrl", o.getLink() == null ? "" : o.getLink(),
-                    "message", "Esta oportunidade usa inscrição externa."));
-        }
         if (resumes.findByStudentId(u.getId()).isEmpty()) {
             throw new IllegalArgumentException("Cadastre seu currículo PDF antes de se candidatar.");
         }

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppData } from '../hooks/useAppData.js';
 import { useToast } from '../hooks/useToast.js';
 import { api } from '../services/api.js';
+import { OPPORTUNITY_AREAS } from '../utils/opportunityAreas.js';
 
 const emptyForm = {
   type: 'Estágio',
@@ -105,7 +106,7 @@ export default function PublishOpportunityPage() {
           <label><span className="label">Empresa ou instituição</span><input name="company" value={form.company} onChange={update} /></label>
           <label><span className="label">Área de atuação</span>
             <select name="area" value={form.area} onChange={update}>
-              {['Tecnologia', 'Design', 'Marketing', 'Negócios', 'Educação'].map((value) => <option key={value}>{value}</option>)}
+              {OPPORTUNITY_AREAS.map((value) => <option key={value}>{value}</option>)}
             </select>
           </label>
           <label><span className="label">Assunto</span><input name="subject" placeholder="Ex.: Desenvolvimento web" value={form.subject} onChange={update} /></label>
