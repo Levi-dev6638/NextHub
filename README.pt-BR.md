@@ -2,31 +2,32 @@
 
 [English](README.md) · **Português (Brasil)**
 
-O NextHub reúne estágios, cursos, oportunidades freelancer e eventos em um mural pesquisável e personalizado para estudantes.
+Eu criei o NextHub para reunir estágios, cursos, trabalhos freelancer e eventos em um mural pesquisável e personalizado para estudantes.
 
 ## Problema e solução
 
-Estudantes encontram oportunidades espalhadas por redes sociais, grupos de conversa e murais físicos. O NextHub centraliza os anúncios e ajuda estudantes a encontrar opções relevantes, manter currículo e interesses no perfil, salvar oportunidades e acompanhar candidaturas. Empresas podem publicar anúncios e gerenciar candidatos.
+Percebi que estudantes encontram oportunidades espalhadas por redes sociais, grupos de conversa e murais físicos. Por isso, centralizei os anúncios no NextHub para ajudar cada estudante a encontrar opções relevantes, manter currículo e interesses no perfil, salvar oportunidades e acompanhar candidaturas. Também incluí um fluxo para empresas publicarem anúncios e gerenciarem candidatos.
 
 ## Funcionalidades do MVP
 
-- Cadastro, login e logout de estudantes e empresas.
-- Perfil do estudante com interesses, formação, formato desejado e disponibilidade.
-- Upload de currículo PDF (máximo de 5 MB) e acesso controlado pelo candidato e pela empresa correspondente.
-- Listagem, busca textual e filtros por tipo, formato, assunto e área.
-- Detalhes de oportunidades, recomendações explicáveis, favoritos e candidaturas internas ou externas.
-- Criação, edição e encerramento de oportunidades pela empresa; análise de candidatos e atualização do status das candidaturas.
-- Interface responsiva, tema claro/escuro e navegação por perfil.
-- Dados locais fictícios para demonstração: 20 oportunidades, 10 usuários e 14 candidaturas.
+- Implementei cadastro, login e logout para estudantes e empresas.
+- Criei o perfil do estudante com cursos, interesses, formação, formato desejado e disponibilidade.
+- Adicionei upload de currículo PDF (máximo de 5 MB) e controle de acesso para o candidato e a empresa correspondente.
+- Implementei listagem, busca textual e filtros por tipo, formato, assunto e área.
+- Incluí detalhes de oportunidades, recomendações explicáveis, favoritos e candidaturas internas ou externas.
+- Permiti que empresas criem, editem e encerrem oportunidades, analisem candidatos e atualizem o status das candidaturas. Coloquei o acesso ao currículo dentro do perfil do candidato e deixei a atualização de status junto à ação de perfil. Estudantes também podem retirar as próprias candidaturas.
+- Configurei notificações derivadas das candidaturas para serem marcadas como lidas ao serem abertas; a bolinha aparece somente enquanto houver itens não lidos neste navegador.
+- Desenvolvi uma interface responsiva com tema claro/escuro, navegação por perfil e barra mobile fixa que respeita a área segura do dispositivo. Mantive as colunas da grade de favoritos mesmo com poucos itens, animei o indicador das abas e centralizei os detalhes das oportunidades em um modal com rolagem interna.
+- Preparei dados locais fictícios para a demonstração: 20 oportunidades, 10 usuários e 14 candidaturas.
 
-O fluxo de candidatura interna exige currículo. Anúncios externos direcionam para o endereço de inscrição publicado. As recomendações são correspondências determinísticas com interesses, formação e formato desejado; a aplicação não chama serviços externos de IA.
+No fluxo de candidatura interna, exijo um currículo. Para anúncios externos, direciono o estudante ao endereço de inscrição publicado. Calculo as recomendações de forma determinística usando interesses, formação e formato desejado; não chamo serviços externos de IA.
 
 ## Tecnologias
 
-- **Front-end:** React 18, Vite 6, JavaScript e CSS.
-- **Back-end:** Java 25, Spring Boot 3.5, Spring Data JPA, Hibernate 6 e Bean Validation.
-- **Persistência:** SQLite em `Back-end/data/nexthub.sqlite`; currículos enviados ficam em `Back-end/uploads/`.
-- **Testes e qualidade:** JUnit 5, Spring Boot Test, Maven, ESLint e GitHub Actions.
+- **Front-end:** escolhi React 18, Vite 6, JavaScript e CSS.
+- **Back-end:** escolhi Java 25, Spring Boot 3.5, Spring Data JPA, Hibernate 6 e Bean Validation.
+- **Persistência:** uso SQLite em `Back-end/data/nexthub.sqlite` e guardo os currículos enviados em `Back-end/uploads/`.
+- **Testes e qualidade:** uso JUnit 5, Spring Boot Test, Maven, ESLint e GitHub Actions.
 
 ## Estrutura do repositório
 
@@ -48,7 +49,7 @@ O fluxo de candidatura interna exige currículo. Anúncios externos direcionam p
 └── README.pt-BR.md
 ```
 
-`frontend/` e `Back-end/` formam a única aplicação ativa. O arquivo `backend/data/seed.json` fornece dados fictícios apenas na primeira inicialização; os dados de execução ficam no SQLite. Faça cópias de segurança de `Back-end/data/nexthub.sqlite` antes de manutenção manual.
+Organizei `frontend/` e `Back-end/` como a única aplicação ativa. Importo os dados fictícios de `backend/data/seed.json` somente na primeira inicialização e mantenho os dados de execução no SQLite. Antes de qualquer manutenção manual, faço cópias de segurança de `Back-end/data/nexthub.sqlite`.
 
 ## Pré-requisitos e instalação
 
@@ -56,7 +57,7 @@ O fluxo de candidatura interna exige currículo. Anúncios externos direcionam p
 - Node.js 22.13 ou superior e npm.
 - Maven Wrapper incluído em `Back-end/`.
 
-Na raiz do repositório:
+Para preparar o projeto, executo estes comandos na raiz do repositório:
 
 ```sh
 npm ci
@@ -68,7 +69,7 @@ No macOS/Linux, use `cp .env.example .env` no lugar de `copy`. Esse arquivo conf
 
 ## Executar localmente
 
-Abra dois terminais na raiz do repositório.
+Para executar o NextHub, abro dois terminais na raiz do repositório.
 
 Terminal 1 — API (PowerShell):
 
@@ -90,24 +91,28 @@ Terminal 2 — Vite:
 npm run dev:frontend
 ```
 
-Acesse <http://localhost:5173>. O Vite encaminha requisições `/api` para `http://localhost:8080`.
+Depois, acesso <http://localhost:5173>; o Vite encaminha minhas requisições `/api` para `http://localhost:8080`.
 
-O back-end cria ou atualiza o arquivo `Back-end/data/nexthub.sqlite` com Hibernate (`ddl-auto=update`) sem apagar dados existentes. A origem permitida pelo CORS pode ser configurada com `NEXTHUB_CORS_ALLOWED_ORIGIN` (padrão: `http://localhost:5173`).
+Configurei o back-end para criar ou atualizar `Back-end/data/nexthub.sqlite` com Hibernate (`ddl-auto=update`) sem apagar dados existentes. Também posso configurar a origem permitida pelo CORS com `NEXTHUB_CORS_ALLOWED_ORIGIN` (padrão: `http://localhost:5173`).
 
-As contas de demonstração usam a senha `demo1234`:
+Para demonstrar os fluxos, uso estas contas fictícias, ambas com a senha `demo1234`:
 
 - Estudante: `ana@nexthub.demo`
 - Empresa: `talentos@nexthub.demo`
 
+## Front-end
+
+Organizei o front-end com React, JSX, Vite e React Router. Coloquei as páginas em `frontend/src/pages/`, os componentes compartilhados em `frontend/src/components/` e a comunicação com a API em `frontend/src/services/api.js`. Uso a URL após `#` na navegação do React Router (por exemplo, `http://localhost:5173/#/mural`). Mantive a identidade visual e os layouts responsivos em `frontend/public/css/style.css`.
+
 ## Endpoints da API
 
-A API Java mantém os contratos usados pelo frontend:
+Na API Java, mantive os contratos usados pelo frontend:
 
 - Autenticação: `POST /api/auth/register`, `/api/auth/login` e `/api/auth/logout`; `GET /api/me`.
 - Perfil: `PATCH /api/profile`.
 - Oportunidades: `GET` e `POST /api/opportunities`; `PATCH` e `DELETE /api/opportunities/{id}`; `GET /api/company/opportunities`.
 - Favoritos: `GET /api/favorites` e `POST /api/favorites/{id}`.
-- Candidaturas: `GET /api/applications`, `POST /api/applications/{id}` e `PATCH /api/applications/{id}`.
+- Candidaturas: `GET /api/applications`, `POST /api/applications/{id}`, `PATCH /api/applications/{id}` e `DELETE /api/applications/{id}` para o estudante dono retirar a própria candidatura.
 - Currículos: `POST /api/resume` e `GET /api/resume/{id}`.
 
 ## Testes e lint
@@ -115,9 +120,10 @@ A API Java mantém os contratos usados pelo frontend:
 ```sh
 npm run lint:frontend
 npm run build:frontend
+npm --prefix frontend run test:e2e
 ```
 
-Execute os testes Java em um terminal separado. No PowerShell:
+Para validar a API, executo os testes Java em um terminal separado. No PowerShell:
 
 ```sh
 cd Back-end
@@ -131,7 +137,7 @@ cd Back-end
 bash ./mvnw test
 ```
 
-Os testes de integração do back-end cobrem cadastro e perfil de estudante, upload de currículo, candidatura e publicação de oportunidade pela empresa. Os fluxos do front-end cobrem cadastro e novo login, candidatura de estudante e publicação da empresa. Para executar os testes no navegador, instale o Chromium uma vez e rode:
+Com os testes de integração do back-end, valido cadastro, atualização do perfil com persistência dos cursos, upload de currículo, envio e retirada de candidatura e publicação de oportunidades pela empresa. Com os 14 testes de navegador, valido cadastro e login, candidatura, publicação pela empresa, leitura de notificações, currículo e perfil de candidatos, interações de cards, abas, modais e navegação mobile durante a rolagem. Para rodar os testes de navegador, instalo o Chromium uma vez e executo:
 
 ```sh
 cd frontend
@@ -140,21 +146,21 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-O Playwright inicia a API e o Vite automaticamente e usa um SQLite temporário separado do banco local.
+Configurei o Playwright para iniciar a API e o Vite automaticamente e usar um SQLite temporário, separado do meu banco local.
 
 ## CI
 
-O GitHub Actions é executado em pull requests direcionados à `main` e em pushes na `main`. O workflow instala as dependências Node, executa lint e build do front-end, testes Maven do back-end e fluxos E2E do front-end com Playwright. A configuração está em `.github/workflows/ci.yml`. A última execução verificada para `dev`, no commit `7be0a89`, terminou com sucesso ([execução 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
+Configurei o GitHub Actions para executar em pull requests direcionados à `main` e em pushes na `main`. O workflow instala as dependências Node, executa lint e build do front-end, testes Maven do back-end e fluxos E2E com Playwright. Mantive essa configuração em `.github/workflows/ci.yml`. A última execução que verifiquei para `dev`, no commit `7be0a89`, terminou com sucesso ([execução 7](https://github.com/Levi-dev6638/NextHub/actions/runs/45915995752)).
 
 ## Persistência, segurança e deploy
 
-As tabelas principais são usuários, oportunidades, candidaturas, favoritos e currículos; recomendações são calculadas no frontend a partir do perfil. Hibernate cria ou atualiza as tabelas do SQLite (`ddl-auto=update`); essa opção não substitui migrações versionadas para produção. O seed de `backend/data/seed.json` só é importado quando o banco ainda não contém usuários e não sobrescreve os dados existentes. A autenticação usa sessões HTTP e senhas com hash BCrypt. Os uploads de currículo têm limite de 5 MB e são entregues somente ao estudante dono ou à empresa responsável por uma oportunidade à qual ele se candidatou.
+Modelei as tabelas principais para usuários, oportunidades, candidaturas, favoritos e currículos; calculo as recomendações no front-end a partir do perfil. Uso Hibernate (`ddl-auto=update`) para criar ou atualizar as tabelas SQLite, mas reconheço que essa opção não substitui migrações versionadas em produção. Importo `backend/data/seed.json` somente quando o banco ainda não tem usuários e não sobrescrevo registros existentes. Protegi a autenticação com sessões HTTP e senhas com hash BCrypt. Limitei os currículos enviados a 5 MB e permito acesso somente ao estudante dono ou à empresa responsável por uma oportunidade à qual ele se candidatou.
 
-Esta configuração foi preparada para uma demonstração acadêmica local, não para deploy de produção com múltiplas instâncias. Uma publicação pública exige armazenamento compartilhado e durável de sessões, persistência e arquivos gerenciados, HTTPS e backups operacionais. Não há deploy hospedado configurado.
+Preparei esta configuração para uma demonstração acadêmica local, não para um deploy de produção com múltiplas instâncias. Antes de publicar o projeto, eu precisaria adicionar armazenamento compartilhado e durável para sessões, persistência e arquivos, além de HTTPS e backups operacionais. Ainda não configurei um deploy hospedado.
 
 ## Equipe
 
-- **Turma:** TDS — turmas mistas 6570, 6756 e 6863
+- **Minha turma:** TDS — turmas mistas 6570, 6756 e 6863
 - **Tech lead:** Levi (`Levi-dev6638`)
 - **Responsável pela apresentação:** Lucas (`martinszvx`)
 - **Integrante:** Giovana (`Giovana-Bernardes`)

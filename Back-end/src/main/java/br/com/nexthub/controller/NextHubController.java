@@ -2,6 +2,9 @@ package br.com.nexthub.controller;
 
 import br.com.nexthub.model.*;
 import br.com.nexthub.repository.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,25 +23,28 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class NextHubController {
     private static final String SESSION_USER = "nexthubUserId";
+    private static final TypeReference<List<Map<String, String>>> COURSE_LIST_TYPE = new TypeReference<>() {};
     private final UserRepository users;
     private final OpportunityRepository opportunities;
     private final ApplicationRepository applications;
     private final FavoriteRepository favorites;
     private final ResumeRepository resumes;
     private final PasswordEncoder encoder;
+    private final ObjectMapper mapper;
 
     @Value("${nexthub.upload-dir}")
     private String uploadDir;
 
     public NextHubController(UserRepository users, OpportunityRepository opportunities,
                              ApplicationRepository applications, FavoriteRepository favorites,
-                             ResumeRepository resumes, PasswordEncoder encoder) {
+                             ResumeRepository resumes, PasswordEncoder encoder, ObjectMapper mapper) {
         this.users = users;
         this.opportunities = opportunities;
         this.applications = applications;
         this.favorites = favorites;
         this.resumes = resumes;
         this.encoder = encoder;
+        this.mapper = mapper;
     }
 
     private User requireUser(HttpServletRequest request) {
@@ -59,6 +65,13 @@ public class NextHubController {
         put(profile, "interests", u.getInterests());
         put(profile, "format", u.getFormat());
         put(profile, "availability", u.getAvailability());
+        if (u.getCourses() != null) {
+            try {
+                profile.put("courses", mapper.readValue(u.getCourses(), COURSE_LIST_TYPE));
+            } catch (JsonProcessingException ex) {
+                throw new IllegalStateException("Stored course data is invalid.", ex);
+            }
+        }
         resumes.findByStudentId(u.getId()).ifPresent(r ->
                 {
                     put(profile, "resume", "/api/resume/" + r.getId());
@@ -167,11 +180,12 @@ public class NextHubController {
     public Map<String, Object> profile(@RequestBody Map<String, Object> body, HttpServletRequest request) {
         User u = requireUser(request);
         requireRole(u, "student");
-        Set<String> allowed = Set.of("phone", "institution", "education", "interests", "format", "availability");
+        Set<String> allowed = Set.of("phone", "institution", "education", "interests", "format", "availability", "courses");
         if (body.keySet().stream().anyMatch(k -> !allowed.contains(k))) {
             throw new IllegalArgumentException("O perfil contém campos não permitidos.");
         }
         for (Map.Entry<String, Object> entry : body.entrySet()) {
+            if (entry.getKey().equals("courses")) continue;
             if (!(entry.getValue() instanceof String value) || value.length() > 500) {
                 throw new IllegalArgumentException("Os campos do perfil devem ser textos de até 500 caracteres.");
             }
@@ -184,8 +198,48 @@ public class NextHubController {
                 case "availability" -> u.setAvailability(value);
             }
         }
+        if (body.containsKey("courses")) {
+            u.setCourses(mapper.valueToTree(parseCourses(body.get("courses"))).toString());
+        }
         users.save(u);
         return Map.of("user", userMap(u));
+    }
+
+    private List<Map<String, String>> parseCourses(Object value) {
+        if (!(value instanceof List<?> courses) || courses.size() > 50) {
+            throw new IllegalArgumentException("Informe até 50 cursos válidos.");
+        }
+        List<Map<String, String>> result = new ArrayList<>();
+        Set<String> allowed = Set.of("name", "institution", "hours");
+        for (Object item : courses) {
+            if (!(item instanceof Map<?, ?> course) ||
+                    course.keySet().stream().anyMatch(key -> !(key instanceof String field) || !allowed.contains(field))) {
+                throw new IllegalArgumentException("Os dados dos cursos são inválidos.");
+            }
+            String name = courseText(course, "name");
+            String institution = courseText(course, "institution");
+            String hours = courseText(course, "hours");
+            if (name.isBlank() && institution.isBlank() && hours.isBlank()) continue;
+            if (!hours.isBlank()) {
+                try {
+                    int parsedHours = Integer.parseInt(hours);
+                    if (parsedHours < 1 || parsedHours > 10000) throw new NumberFormatException();
+                } catch (NumberFormatException ex) {
+                    throw new IllegalArgumentException("A carga horária deve ser um número entre 1 e 10000.");
+                }
+            }
+            result.add(Map.of("name", name, "institution", institution, "hours", hours));
+        }
+        return result;
+    }
+
+    private String courseText(Map<?, ?> course, String field) {
+        Object value = course.get(field);
+        if (value == null) return "";
+        if (!(value instanceof String text) || text.length() > 160) {
+            throw new IllegalArgumentException("Cada campo do curso deve ser um texto de até 160 caracteres.");
+        }
+        return text.trim();
     }
 
     @GetMapping("/opportunities")
@@ -356,6 +410,17 @@ public class NextHubController {
         requireRole(u, "company");
         return applications.findByOpportunityOwnerIdOrderByCreatedAtDesc(u.getId()).stream()
                 .map(this::applicationMap).collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/applications/{id}")
+    public Map<String, Boolean> withdrawApplication(@PathVariable String id, HttpServletRequest request) {
+        User u = requireUser(request);
+        requireRole(u, "student");
+        Application application = applications.findById(id)
+                .filter(item -> item.getStudent().getId().equals(u.getId()))
+                .orElseThrow(NotFoundException::new);
+        applications.delete(application);
+        return Map.of("deleted", true);
     }
 
     @PatchMapping("/applications/{id}")

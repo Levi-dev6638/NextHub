@@ -13,10 +13,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
@@ -66,13 +68,19 @@ class NextHubHappyPathTests {
                                 "institution", "Universidade de Teste",
                                 "interests", "Tecnologia",
                                 "format", "Remoto",
-                                "availability", "30 horas semanais"))))
+                                "availability", "30 horas semanais",
+                                "courses", List.of(Map.of(
+                                        "name", "Java",
+                                        "institution", "Universidade de Teste",
+                                        "hours", "40"))))))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.user.profile.phone").value("(11) 99999-1234"));
+                .andExpect(jsonPath("$.user.profile.phone").value("(11) 99999-1234"))
+                .andExpect(jsonPath("$.user.profile.courses[0].name").value("Java"));
 
         mvc.perform(get("/api/me").session(session))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.user.profile.institution").value("Universidade de Teste"));
+                .andExpect(jsonPath("$.user.profile.institution").value("Universidade de Teste"))
+                .andExpect(jsonPath("$.user.profile.courses[0].hours").value("40"));
 
         MockMultipartFile resume = new MockMultipartFile(
                 "resume",
@@ -83,15 +91,26 @@ class NextHubHappyPathTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.user.profile.resumeName").value("curriculo.pdf"));
 
-        mvc.perform(post("/api/applications/o1").session(session))
+        MvcResult application = mvc.perform(post("/api/applications/o1").session(session))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.opportunityId").value("o1"))
-                .andExpect(jsonPath("$.status").value("Enviada"));
+                .andExpect(jsonPath("$.status").value("Enviada"))
+                .andReturn();
+        String applicationId = mapper.readTree(application.getResponse().getContentAsString())
+                .path("id").asText();
 
         mvc.perform(get("/api/applications").session(session))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].opportunityId").value("o1"))
                 .andExpect(jsonPath("$[0].status").value("Enviada"));
+
+        mvc.perform(delete("/api/applications/" + applicationId).session(session))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.deleted").value(true));
+
+        mvc.perform(get("/api/applications").session(session))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isEmpty());
     }
 
     @Test

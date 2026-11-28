@@ -22,5 +22,13 @@ test('empresa entra, publica oportunidade e a encontra na própria lista', async
 
   await expect(page.locator('.toast')).toHaveText('Oportunidade publicada.');
   await expect(page.locator('.page h1')).toHaveText('Minhas oportunidades');
-  await expect(page.locator('.list-row').filter({ hasText: title })).toBeVisible();
+  const opportunity = page.locator('.list-row').filter({ hasText: title });
+  await expect(opportunity).toBeVisible();
+  await expect(opportunity.getByRole('button')).toHaveCount(1);
+  await opportunity.getByRole('button', { name: 'Ver' }).click();
+  await expect(page.locator('#modal').getByRole('button', { name: 'Editar' })).toBeVisible();
+  await expect(page.locator('#modal').getByRole('button', { name: 'Encerrar oportunidade' })).toBeVisible();
+  await page.locator('#modal').getByRole('button', { name: 'Editar' }).click();
+  await expect(page.locator('.page h1')).toHaveText('Editar oportunidade');
+  await expect(page.locator('#pub input[name="title"]')).toHaveValue(title);
 });

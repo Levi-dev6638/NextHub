@@ -2,71 +2,108 @@
 
 **English** · [Português (Brasil)](DECISIONS.pt-BR.md)
 
-This log records the decisions that define the current NextHub MVP. Entries are grouped by topic; later decisions supersede earlier choices where noted.
+I use this log to explain the decisions that define the current NextHub MVP. I group my choices by topic and mark earlier decisions as superseded when I change them.
 
 ## 23 November 2026 — Opportunity-board references
 
-- **Decision:** use InfoJobs and Indeed as references for familiar search, filtering, and opportunity-card patterns, without reproducing either product.
-- **Alternatives considered:** create every interaction from scratch or copy one portal's layout.
-- **Rationale:** recognizable patterns make the board easier to understand while leaving room for NextHub's own identity and scope.
+- **My decision:** I used InfoJobs and Indeed as references for familiar search, filtering, and opportunity-card patterns without reproducing either product.
+- **Alternatives I considered:** I could have created every interaction from scratch or copied one portal's layout.
+- **Why I chose it:** recognizable patterns make the board easier to understand while leaving room for NextHub's own identity and scope.
 
 ## 24 November 2026 — MVP scope
 
-- **Decision:** prioritize a demonstrable student and company flow: profiles, opportunities, search, explainable recommendations, favorites, applications, and résumé access.
-- **Alternatives considered:** a static listings page or a full recruitment and selection platform.
-- **Rationale:** an end-to-end local product better demonstrates the problem while avoiding unneeded integrations and a full hiring workflow.
+- **My decision:** I prioritized a demonstrable student and company flow: profiles, opportunities, search, explainable recommendations, favorites, applications, and résumé access.
+- **Alternatives I considered:** I could have built a static listings page or a full recruitment and selection platform.
+- **Why I chose it:** an end-to-end local product demonstrates the problem without requiring unnecessary integrations or a full hiring workflow.
 
 ## 25 November 2026 — Official application architecture (superseded 26 November)
 
-- **Decision at that time:** `frontend/` (React 18 and Vite) and `backend/` (Node.js and Express) were the active application. The earlier Java/Spring and React/Vite scaffolds in `Back-end/` and `Front-end/` were considered superseded and removed from the working project.
-- **Alternatives considered:** keep both application trees or make the Java/Spring scaffold the official backend.
-- **Rationale at that time:** the Node/Express implementation contained the authentication, opportunity, profile, application, favorite, and résumé flows, plus the demonstration data. Keeping the Java/Vite starters would leave competing, non-integrated applications and a CI workflow testing the wrong source.
+- **My decision at that time:** I treated `frontend/` (React 18 and Vite) and `backend/` (Node.js and Express) as the active application. I considered the earlier Java/Spring and React/Vite scaffolds in `Back-end/` and `Front-end/` superseded and removed them from the working project.
+- **Alternatives I considered:** I could have kept both application trees or made the Java/Spring scaffold the official backend.
+- **Why I chose it at that time:** the Node/Express implementation contained the authentication, opportunity, profile, application, favorite, and résumé flows, plus the demonstration data. Keeping the Java/Vite starters would leave competing, non-integrated applications and a CI workflow testing the wrong source.
 
 ## 25 November 2026 — Local JSON persistence
 
-- **Decision at that time:** retain the existing JSON demonstration and runtime data in `backend/data/`, and store uploaded PDFs in the ignored `backend/uploads/` directory.
-- **Alternatives considered:** introduce a SQL database or an external data service.
-- **Rationale at that time:** the committed local data made the academic demo repeatable and available offline; introducing a database was considered outside the demonstration needs. Backups were required before manual data maintenance.
+- **My decision at that time:** I retained the existing JSON demonstration and runtime data in `backend/data/` and stored uploaded PDFs in the ignored `backend/uploads/` directory.
+- **Alternatives I considered:** I could have introduced a SQL database or an external data service.
+- **Why I chose it at that time:** the committed local data made the academic demo repeatable and available offline; I considered a database unnecessary for the demonstration. I also required backups before manual data maintenance.
 
 ## 25 November 2026 — Session authentication and résumé boundaries
 
-- **Decision at that time:** keep bcrypt-hashed passwords and role-checked Express sessions; restrict résumé access to the student owner and companies with applications to their own opportunities.
-- **Alternatives considered:** storing plaintext credentials, exposing uploads as static files, or introducing an external identity provider.
-- **Rationale:** this fits a local MVP and prevents direct public access to résumés. Production deployment still needs durable shared session storage and managed file storage.
+- **My decision at that time:** I kept bcrypt-hashed passwords and role-checked Express sessions; I restricted résumé access to the student owner and companies with applications to their own opportunities.
+- **Alternatives I considered:** I could have stored plaintext credentials, exposed uploads as static files, or introduced an external identity provider.
+- **Why I chose it:** this fits a local MVP and prevents direct public access to résumés. A production deployment still needs durable shared session storage and managed file storage.
 
 ## 24 November 2026 — Explainable recommendations
 
-- **Decision:** calculate recommendations deterministically from the student's interests, education, and preferred format, and show a short explanation for each match.
-- **Alternatives considered:** random ordering, keyword-only recommendations, or an opaque external AI ranking service.
-- **Rationale:** the result is predictable and can be explained during the presentation without external APIs or service costs.
+- **My decision:** I calculate recommendations deterministically from the student's interests, education, and preferred format, and show a short explanation for each match.
+- **Alternatives I considered:** I could have used random ordering, keyword-only recommendations, or an opaque external AI ranking service.
+- **Why I chose it:** the result is predictable and easy to explain during the presentation, without external APIs or service costs.
 
 ## 24 November 2026 — Saved opportunities and application navigation
 
-- **Decision:** show favorites as a tab within the student's Applications area rather than as a separate navigation destination.
-- **Alternatives considered:** separate Saved and Applications areas or hide favorites from application tracking.
-- **Rationale:** this keeps saved and submitted opportunities together while maintaining separate views.
+- **My decision:** I show favorites as a tab within the student's Applications area rather than as a separate navigation destination.
+- **Alternatives I considered:** I could have separated Saved and Applications or hidden favorites from application tracking.
+- **Why I chose it:** this keeps saved and submitted opportunities together while maintaining separate views.
 
 ## 24 November 2026 — Responsive navigation and theme
 
-- **Decision:** keep role-specific navigation, a desktop sidebar, a mobile bottom bar, and light/dark theme controls in Settings.
-- **Alternatives considered:** one identical navigation for both roles or a permanent theme control in the mobile bar.
-- **Rationale:** role-specific actions reduce clutter; the mobile bar remains focused on navigation.
+- **My decision:** I kept role-specific navigation, a desktop sidebar, a mobile bottom bar, and light/dark theme controls in Settings.
+- **Alternatives I considered:** I could have used identical navigation for both roles or added a permanent theme control to the mobile bar.
+- **Why I chose it:** role-specific actions reduce clutter, and the mobile bar stays focused on navigation.
 
 ## 24 November 2026 — Out-of-scope features
 
-- **Decision:** do not add gamification, rankings, automatic web scraping, external institutional integrations, or a full company selection process to this MVP.
-- **Alternatives considered:** expand the product beyond the one-week demonstrable flow.
-- **Rationale:** those features add complexity without being necessary to validate the opportunity-board concept.
+- **My decision:** I left gamification, rankings, automatic web scraping, external institutional integrations, and a full company selection process out of this MVP.
+- **Alternatives I considered:** I could have expanded the product beyond the one-week demonstrable flow.
+- **Why I chose it:** those features add complexity without being necessary to validate the opportunity-board concept.
 
 ## 26 November 2026 — Java and SQLite backend migration
 
-- **Decision:** replace the Node/Express API with the official Java/Spring Boot API, use Spring Data JPA/Hibernate for persistence, and SQLite as the local persistent database.
-- **Alternatives considered:** keeping Node as a competing API or retaining data only in JSON files.
-- **Rationale:** match the requested architecture, centralize persistence in SQLite, and maintain a single REST API responsible for the NextHub flows. This supersedes the 25 November backend and persistence decisions.
+- **My decision:** I replaced the Node/Express API with the official Java/Spring Boot API, chose Spring Data JPA/Hibernate for persistence, and selected SQLite as the local persistent database.
+- **Alternatives I considered:** I could have kept Node as a competing API or retained data only in JSON files.
+- **Why I chose it:** this matches the requested architecture, centralizes persistence in SQLite, and keeps one REST API responsible for NextHub flows. This supersedes my 25 November backend and persistence decisions.
 
 ## 26 November 2026 — Visual adjustments and résumé access
 
-- **Decision:** record the visual style adjustments made by the user and define that the company's candidate area should provide “View résumé” buttons to open candidates' résumés.
-- **Alternatives considered:** making résumés accessible only from another screen or omitting direct access from the candidate list.
-- **Rationale:** make it easier to review a résumé while evaluating candidates.
-- **Status:** this entry records a UI decision; it does not confirm that the feature is present in the current code, as the related changes were reverted by the user.
+- **My decision:** I recorded my visual style adjustments and specified that the company's candidate area should provide “View résumé” buttons.
+- **Alternatives I considered:** I could have made résumés accessible only from another screen or omitted direct access from the candidate list.
+- **Why I chose it:** direct access makes it easier to review a résumé while evaluating candidates.
+- **Status:** I recorded this as a UI decision at the time, not as confirmation that the feature was in the code; I had reverted the related changes.
+
+## 27 November 2026 — Profile, notification, and application behavior
+
+- **My decision:** I persist student course entries with the profile in SQLite and expose them through the profile API.
+- **Alternatives I considered:** I could have dropped course data from profile updates or introduced a separate course table.
+- **Why I chose it:** course entries are a small part of the student's profile in this MVP, so the API validates and stores the list as JSON with the user record.
+
+- **My decision:** I derive notifications from application records and save read state per user in the browser's `localStorage`; I show the unread dot only when unread notifications exist.
+- **Alternatives I considered:** I could have added a separate server-side notification table or shown the dot permanently.
+- **Why I chose it:** this keeps the local MVP simple. Read state stays in the browser and is not synchronized across devices.
+
+- **My decision:** I let a student withdraw an application through `DELETE /api/applications/{id}`, restricted to that application's owner.
+- **Alternatives I considered:** I could have let companies delete student applications or kept applications immutable.
+- **Why I chose it:** students control their own submissions while the API enforces application ownership.
+
+- **My decision:** I keep the mobile navigation bar fixed while scrolling and include device safe-area padding.
+- **Alternatives I considered:** I could have let the bar scroll with page content or ignored mobile safe areas.
+- **Why I chose it:** this keeps navigation accessible on phones without letting system UI obscure it.
+
+## 27 November 2026 — Opportunity actions and motion
+
+- **My decision:** I keep only the “View” action in the company's opportunity list and place “Edit” and “Close opportunity” in the details.
+- **Alternatives I considered:** I could have kept every action in the list row or split the buttons between the list and details.
+- **Why I chose it:** this simplifies the list and prevents actions from wrapping or becoming cramped on small screens.
+
+- **My decision:** I use restrained animations for interface feedback and transitions while honoring the system's reduced-motion preference.
+- **Alternatives I considered:** I could have removed interface animation or added continuous, pronounced motion.
+- **Why I chose it:** I want to provide visual feedback without distraction or disregard for accessibility preferences.
+
+## 27 November 2026 — Card, dialog, tab, and candidate-review layout
+
+- **My decision:** I keep favorite-card columns consistent when only a few results are shown, animate the active tab indicator, and keep opportunity details centered and scrollable within the viewport.
+- **Alternatives I considered:** I could have allowed sparse favorite cards to expand and spread across the row, kept a static tab underline, or let long dialogs exceed the viewport.
+- **Why I chose it:** a consistent grid and clear tab movement make navigation easier, while the dialog remains usable on smaller screens.
+- **My decision:** I place the candidate status beside the profile action, keep both controls the same size, align the status to the right, and put résumé access inside the candidate profile.
+- **Alternatives I considered:** I could have kept a separate résumé button in the candidate row or left status on a different line.
+- **Why I chose it:** the candidate row stays organized while résumé access remains available from the profile.

@@ -10,6 +10,8 @@
     --primary: #24365f;
     --hover: #d8d8db;
     --shadow: 0 2px 10px #22243808;
+    --op-card-shadow: 0 3px 12px rgba(32, 36, 50, .12);
+    --op-card-shadow-hover: 0 10px 24px rgba(32, 36, 50, .2);
     --orange: #bd690c;
     --blue: #1165b9;
     --purple: #4e31a3;
@@ -39,6 +41,8 @@ body.dark {
     --primary: #24365f;
     --hover: #d0cfcf;
     --shadow: 0 3px 15px #0002;
+    --op-card-shadow: 0 3px 14px rgba(0, 0, 0, .34);
+    --op-card-shadow-hover: 0 12px 28px rgba(0, 0, 0, .5);
     --orange: #f1a64f;
     --blue: #1165b9;
     --purple: #4e31a3;
@@ -115,13 +119,18 @@ button {
     display: flex;
     gap: 12px;
     align-items: center;
-    font-weight: 600
+    font-weight: 600;
+    transition: color .18s ease, background .18s ease, transform .18s ease
 }
 
 .nav a:hover,
 .nav a.active {
     color: var(--primary);
     background: var(--hover)
+}
+
+.nav a:hover {
+    transform: translateX(3px)
 }
 
 .nav .ico {
@@ -187,7 +196,8 @@ button {
 
 .page {
     max-width: 1500px;
-    margin: auto
+    margin: auto;
+    animation: page-enter .24s ease both
 }
 
 .welcome {
@@ -266,7 +276,7 @@ button {
     left: 13px;
     top: 7px;
     color: var(--muted);
-    font-size: 22px
+    font-size: 28px;
 }
 
 .search-wrap input {
@@ -322,6 +332,40 @@ textarea:focus {
     filter: brightness(1.08)
 }
 
+.btn:not(:disabled),
+.text-btn {
+    transition: transform .18s ease, filter .18s ease, color .18s ease
+}
+
+.btn:not(:disabled):hover,
+.text-btn:hover {
+    transform: translateY(-1px)
+}
+
+.btn:not(:disabled):active,
+.text-btn:active {
+    transform: scale(.98)
+}
+
+.modal-head .icon-btn {
+    font-size: 28px;
+    background: transparent;
+    border: 0;
+    transition: color .2s ease, transform .2s ease
+}
+
+.modal-head .icon-btn:hover {
+    background: transparent;
+    color: var(--primary);
+    filter: none;
+    transform: translateY(-3px) scale(1.15);
+    box-shadow: none
+}
+
+.modal-head .icon-btn:active {
+    transform: translateY(-1px) scale(1.05)
+}
+
 .section-head {
     display: flex;
     align-items: end;
@@ -342,21 +386,42 @@ textarea:focus {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 14px
 }
 
+.grid.favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+}
+
+.opportunities-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+}
+
+/* Todos os cards */
 .op-card {
+    width: 100%;
+    max-width: 420px;
+    justify-self: center;
+    box-sizing: border-box;
+
     padding: 17px;
     display: flex;
     flex-direction: column;
     min-height: 242px;
-    transition: border .15s, transform .15s
+    box-shadow: var(--op-card-shadow);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    animation: card-enter .3s ease both;
 }
 
 .op-card:hover {
     border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
-    transform: translateY(-2px)
+    transform: translateY(-2px);
+    box-shadow: var(--op-card-shadow-hover)
 }
 
 .card-top {
@@ -478,6 +543,14 @@ textarea:focus {
     padding: 20px
 }
 
+.layout > .panel a.btn {
+    display: block;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: anywhere
+}
+
 .panel h2,
 .panel h3 {
     font-family: Manrope;
@@ -508,6 +581,10 @@ textarea:focus {
     margin-top: 16px
 }
 
+.modal .form-actions {
+    flex-wrap: wrap
+}
+
 .list {
     display: grid;
     gap: 10px
@@ -534,7 +611,37 @@ textarea:focus {
     margin-top: 4px
 }
 
+.candidate-actions {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px
+}
+
+.candidate-info {
+    flex: 1;
+    width: 100%;
+    min-width: 0
+}
+
+.candidate-actions > .btn,
+.candidate-actions > select {
+    flex: 0 1 140px;
+    width: 140px;
+    min-width: 130px;
+    max-width: 100%;
+    height: 40px;
+    box-sizing: border-box
+}
+
+.candidate-actions > select {
+    margin-left: auto
+}
+
 .tabs {
+    position: relative;
     display: flex;
     gap: 18px;
     border-bottom: 1px solid var(--border);
@@ -551,8 +658,18 @@ textarea:focus {
 
 .tab.active {
     color: var(--primary);
-    border-color: var(--primary);
+    border-bottom-color: transparent;
     font-weight: 700
+}
+
+.tab-indicator {
+    position: absolute;
+    bottom: -1px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 2px 2px 0 0;
+    pointer-events: none;
+    transition: left .25s ease, width .25s ease
 }
 
 .login-bg {
@@ -611,15 +728,32 @@ textarea:focus {
 }
 
 .toast {
-    position: fixed;
-    right: 22px;
-    bottom: 25px;
+    position: relative;
+    max-width: 100%;
     padding: 12px 16px;
     background: var(--text);
     color: var(--card);
     border-radius: 9px;
+    box-shadow: var(--shadow);
+    animation: toast-enter .2s ease-out both;
+    pointer-events: auto
+}
+
+.toast-container {
+    position: fixed;
+    right: 22px;
+    bottom: 25px;
     z-index: 30;
-    box-shadow: var(--shadow)
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    max-width: calc(100vw - 44px);
+    pointer-events: none
+}
+
+.toast-exit {
+    animation: toast-out .18s ease-in both
 }
 
 .modal-backdrop {
@@ -629,17 +763,33 @@ textarea:focus {
     z-index: 20;
     display: grid;
     place-items: center;
-    padding: 18px
+    padding: 18px;
+    overflow-y: auto;
+    animation: backdrop-enter .2s ease-out both
 }
 
 .modal {
     width: min(650px, 100%);
     max-height: 88vh;
+    max-height: calc(100vh - 36px);
+    max-height: calc(100dvh - 36px);
+    min-height: 0;
     overflow: auto;
+    overscroll-behavior: contain;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: 24px
+    padding: 24px;
+    animation: modal-enter .24s cubic-bezier(.2, .8, .2, 1) both
+}
+
+.modal-backdrop.is-closing {
+    pointer-events: none;
+    animation: backdrop-exit .18s ease-in both
+}
+
+.modal-backdrop.is-closing .modal {
+    animation: modal-exit .18s ease-in both
 }
 
 .modal-head {
@@ -693,6 +843,10 @@ textarea:focus {
     }
 
     .grid {
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr))
+    }
+
+    .grid.favorites-grid {
         grid-template-columns: repeat(auto-fill, minmax(275px, 1fr))
     }
 }
@@ -761,6 +915,10 @@ textarea:focus {
         grid-template-columns: 1fr
     }
 
+    .grid.favorites-grid {
+        grid-template-columns: 1fr
+    }
+
     .filters {
         display: grid;
         grid-template-columns: minmax(0, 1fr)
@@ -793,11 +951,13 @@ textarea:focus {
         bottom: 0;
         left: 0;
         right: 0;
+        height: calc(72px + env(safe-area-inset-bottom));
         display: flex;
         justify-content: space-around;
+        align-items: center;
         background: var(--side);
         border-top: 1px solid var(--border);
-        padding: 7px 3px max(7px, env(safe-area-inset-bottom));
+        padding: 8px 3px calc(8px + env(safe-area-inset-bottom));
         z-index: 10
     }
 
@@ -808,7 +968,12 @@ textarea:focus {
         text-decoration: none;
         color: var(--muted);
         font-size: 10px;
-        padding: 3px 6px
+        padding: 3px 6px;
+        transition: color .18s ease, transform .18s ease
+    }
+
+    .mobile-nav a:active {
+        transform: scale(.95)
     }
 
     .mobile-nav a.active {
@@ -920,6 +1085,108 @@ textarea:focus {
 }
 
 .notification-highlight {
-    outline: 2px solid var(--primary);
-    transition: outline .2s
+    outline: 2px solid transparent;
+    animation: notification-highlight 1.2s ease-out both
+}
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes card-enter {
+    from {
+        opacity: 0;
+        translate: 0 10px
+    }
+
+    to {
+        opacity: 1;
+        translate: 0 0
+    }
+}
+
+@keyframes notification-highlight {
+    0%,
+    35% {
+        outline-color: var(--primary);
+        outline-offset: 0
+    }
+
+    100% {
+        outline-color: transparent;
+        outline-offset: 3px
+    }
+}
+
+@keyframes backdrop-enter {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes modal-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.98)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1)
+    }
+}
+
+@keyframes backdrop-exit {
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes modal-exit {
+    to {
+        opacity: 0;
+        transform: translateY(8px) scale(.98)
+    }
+}
+
+@keyframes toast-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes toast-out {
+    to {
+        opacity: 0;
+        transform: translateY(8px)
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important
+    }
 }
