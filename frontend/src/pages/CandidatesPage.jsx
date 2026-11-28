@@ -35,35 +35,41 @@ export default function CandidatesPage() {
           <div className="list">
             {applications.map((application) => (
               <div className="list-row" data-application-id={application.id} key={application.id}>
-                <div>
+                <div className="candidate-info">
                   <strong>{application.user?.name || 'Estudante'} · {application.opportunity?.title || ''}</strong>
                   <small>{application.user?.email || ''} · {application.user?.profile?.education || 'Formação não informada'}</small>
-                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 8 }}>
-                    <button className="btn btn-primary" type="button" data-resume={application.id} onClick={() => setSelectedResume(application)}>
-                      Ver currículo
-                    </button>
+                  <div className="candidate-actions">
                     <button className="btn" type="button" data-profile={application.id} onClick={() => setSelectedProfile(application)}>
                       Ver perfil
                     </button>
+                    <select
+                      aria-label={`Status de ${application.user?.name || 'candidato'}`}
+                      data-status={application.id}
+                      style={{ width: 'auto' }}
+                      value={displayApplicationStatus(application.status)}
+                      onChange={(event) => updateStatus(application.id, event.target.value)}
+                    >
+                      <option value="Em análise">Em análise</option>
+                      <option value="Aprovada">Aprovada</option>
+                      <option value="Recusada">Recusada</option>
+                    </select>
                   </div>
                 </div>
-                <select
-                  aria-label={`Status de ${application.user?.name || 'candidato'}`}
-                  data-status={application.id}
-                  style={{ width: 'auto' }}
-                  value={displayApplicationStatus(application.status)}
-                  onChange={(event) => updateStatus(application.id, event.target.value)}
-                >
-                  <option value="Em análise">Em análise</option>
-                  <option value="Aprovada">Aprovada</option>
-                  <option value="Recusada">Recusada</option>
-                </select>
               </div>
             ))}
             {!applications.length && <EmptyState>Ainda não há candidaturas.</EmptyState>}
           </div>
         )}
-      {selectedProfile && <CandidateProfileModal application={selectedProfile} onClose={() => setSelectedProfile(null)} />}
+      {selectedProfile && (
+        <CandidateProfileModal
+          application={selectedProfile}
+          onClose={() => setSelectedProfile(null)}
+          onViewResume={() => {
+            setSelectedResume(selectedProfile);
+            setSelectedProfile(null);
+          }}
+        />
+      )}
       {selectedResume && <CandidateResumeModal application={selectedResume} onClose={() => setSelectedResume(null)} />}
     </>
   );

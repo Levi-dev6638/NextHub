@@ -37,7 +37,7 @@ export function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div aria-live="polite" aria-atomic="true">
+      <div className="toast-container" aria-live="polite" aria-atomic="true">
         {toasts.map((toast) => (
           <div
             className={`toast${toast.exiting ? ' toast-exit' : ''}`}

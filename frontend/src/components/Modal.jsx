@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function Modal({
   id = 'modal',
@@ -23,7 +24,7 @@ export default function Modal({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  return (
+  return createPortal(
     <div
       className={`modal-backdrop${closing ? ' is-closing' : ''}`}
       id={id}
@@ -51,6 +52,7 @@ export default function Modal({
         </div>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

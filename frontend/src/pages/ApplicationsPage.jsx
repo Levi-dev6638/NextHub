@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import ApplicationDetailModal from '../components/ApplicationDetailModal.jsx';
 import EmptyState from '../components/EmptyState.jsx';
 import OpportunityCard from '../components/OpportunityCard.jsx';
@@ -13,11 +13,32 @@ export default function ApplicationsPage() {
   const { apply, toggleFavorite } = useOpportunityActions();
   const toast = useToast();
   const [favoritesTab, setFavoritesTab] = useState(false);
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+  const tabsRef = useRef(null);
   const [selected, setSelected] = useState(null);
   const [selectedOpportunity, setSelectedOpportunity] = useState(null);
   const rows = applications
     .map((application) => ({ ...application.opportunity, application }))
     .filter((opportunity) => opportunity.id);
+
+  useLayoutEffect(() => {
+    const tabs = tabsRef.current;
+    const activeTab = tabs?.querySelector('.tab.active');
+    if (!tabs || !activeTab) return undefined;
+
+    const updateIndicator = () => {
+      const tabsBounds = tabs.getBoundingClientRect();
+      const activeBounds = activeTab.getBoundingClientRect();
+      setIndicatorStyle({
+        left: activeBounds.left - tabsBounds.left,
+        width: activeBounds.width,
+      });
+    };
+
+    updateIndicator();
+    window.addEventListener('resize', updateIndicator);
+    return () => window.removeEventListener('resize', updateIndicator);
+  }, [favoritesTab, applications.length, favorites.length]);
 
   const withdraw = async (id) => {
     if (!window.confirm('Deseja retirar sua candidatura?')) return;
@@ -36,19 +57,20 @@ export default function ApplicationsPage() {
       <div className="welcome">
         <div><h1 className="h1">Candidaturas</h1><p className="sub">Acompanhe seus processos e oportunidades salvas.</p></div>
       </div>
-      <div className="tabs">
+      <div className="tabs" ref={tabsRef}>
         <button className={`tab${!favoritesTab ? ' active' : ''}`} type="button" data-tab="apps" onClick={() => setFavoritesTab(false)}>
           Minhas candidaturas ({applications.length})
         </button>
         <button className={`tab${favoritesTab ? ' active' : ''}`} type="button" data-tab="favorites" onClick={() => setFavoritesTab(true)}>
           Favoritos ({favorites.length})
         </button>
+        <span className="tab-indicator" aria-hidden="true" style={indicatorStyle} />
       </div>
       {error && <p className="error" role="alert">{error}</p>}
       {loading && applications.length === 0 && favorites.length === 0
         ? <p className="muted">Carregando candidaturas…</p>
         : (
-          <div className="grid">
+          <div className={`grid${favoritesTab ? ' favorites-grid' : ''}`}>
             {favoritesTab
               ? favorites.map((opportunity) => (
                 <OpportunityCard

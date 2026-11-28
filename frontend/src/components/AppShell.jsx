@@ -125,8 +125,17 @@ export default function AppShell() {
     if (!pendingScrollId) return undefined;
     const timer = window.setTimeout(() => {
       const row = document.querySelector(`[data-application-id="${CSS.escape(pendingScrollId)}"]`);
-      row?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      row?.classList.add('notification-highlight');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      row?.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+      if (row) {
+        const removeHighlight = (event) => {
+          if (event.target !== row || event.animationName !== 'notification-highlight') return;
+          row.classList.remove('notification-highlight');
+          row.removeEventListener('animationend', removeHighlight);
+        };
+        row.addEventListener('animationend', removeHighlight);
+        row.classList.add('notification-highlight');
+      }
       setPendingScrollId('');
     }, 200);
     return () => window.clearTimeout(timer);
@@ -179,7 +188,7 @@ export default function AppShell() {
             <span className="user-label">{user.name.split(' ')[0]}</span>
           </div>
         </header>
-        <div className="page"><Outlet /></div>
+        <div className="page" key={location.key}><Outlet /></div>
       </main>
       <nav className="mobile-nav">
         {(user.role === 'company'

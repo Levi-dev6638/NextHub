@@ -1,6 +1,6 @@
 import Modal from './Modal.jsx';
 
-export default function CandidateProfileModal({ application, onClose }) {
+export default function CandidateProfileModal({ application, onClose, onViewResume }) {
   if (!application) return null;
   const user = application.user || {};
   const profile = user.profile || {};
@@ -52,6 +52,11 @@ export default function CandidateProfileModal({ application, onClose }) {
           </div>
         </section>
       )}
+      <div className="form-actions">
+        <button className="btn btn-primary" type="button" data-resume={application.id} onClick={onViewResume}>
+          Ver currículo
+        </button>
+      </div>
     </Modal>
   );
 }
